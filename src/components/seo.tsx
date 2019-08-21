@@ -18,7 +18,6 @@ interface Props {
 }
 
 function SEO({ description, lang, meta, title }: Props) {
-  console.log(lang, meta)
   const { site } = useStaticQuery(
     graphql`
       query {

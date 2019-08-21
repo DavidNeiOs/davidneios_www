@@ -1,37 +1,46 @@
-import { Link } from "gatsby"
 import React from "react"
+import styled from "styled-components"
+import Link from "./styles/Link"
+import ToggleTheme from "./styles/ToggleTheme"
+import { Theme } from "../theme"
 
 interface Props {
   siteTitle: string
+  changeTheme: () => void
+  lightTheme: boolean
 }
 
-const Header = ({ siteTitle }: Props) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+const HeaderEl = styled.header<{ theme: Theme }>`
+  background-color: ${props => props.theme.primary};
+  a {
+    color: ${props => props.theme.navLinks};
+  }
+  color: ${props => props.theme.navLinks};
+  z-index: 99;
+  padding: 2rem;
+`
+
+const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => (
+  <HeaderEl>
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            color: `white`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
         </Link>
       </h1>
+      <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
     </div>
-  </header>
+  </HeaderEl>
 )
 
 export default Header
