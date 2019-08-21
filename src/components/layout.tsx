@@ -16,16 +16,26 @@ interface Props {
 }
 interface State {
   lightTheme: boolean
+  loading: boolean
 }
 class Layout extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props)
-    const localStorageLayout = localStorage.getItem("lightTheme")
     this.state = {
-      lightTheme: localStorageLayout ? JSON.parse(localStorageLayout) : true,
+      lightTheme: true,
+      loading: true,
     }
   }
 
+  componentDidMount() {
+    const localStorageLayout = localStorage.getItem("lightTheme")
+    if (localStorageLayout) {
+      this.setState({
+        lightTheme: JSON.parse(localStorageLayout),
+        loading: false,
+      })
+    }
+  }
   changeTheme = () => {
     this.setState({
       lightTheme: !this.state.lightTheme,
@@ -34,7 +44,9 @@ class Layout extends PureComponent<Props, State> {
   }
   render() {
     const { children } = this.props
-    return (
+    return this.state.loading ? (
+      <div>loading...</div>
+    ) : (
       <ThemeProvider theme={this.state.lightTheme ? light : dark}>
         <LayoutEl>
           <StaticQuery

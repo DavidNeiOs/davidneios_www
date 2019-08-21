@@ -41,14 +41,13 @@ const LanguageSwitcher = () => (
           overlay={
             <Menu>
               {languages.map((lng: string) => (
-                <Menu.Item key={lng}>
-                  <span
-                    onClick={() => {
-                      changeLocale(lng)
-                    }}
-                  >
-                    {languageNames[lng]}
-                  </span>
+                <Menu.Item
+                  key={lng}
+                  onClick={() => {
+                    changeLocale(lng)
+                  }}
+                >
+                  <span>{languageNames[lng]}</span>
                 </Menu.Item>
               ))}
             </Menu>
