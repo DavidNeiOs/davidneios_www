@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Link from "./styles/Link"
 import ToggleTheme from "./styles/ToggleTheme"
 import { Theme } from "../theme"
+import LanguageSwitcher from "./languageSwitcher"
 
 interface Props {
   siteTitle: string
@@ -39,6 +40,7 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => (
         </Link>
       </h1>
       <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+      <LanguageSwitcher />
     </div>
   </HeaderEl>
 )

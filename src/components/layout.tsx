@@ -18,16 +18,11 @@ interface State {
   lightTheme: boolean
 }
 class Layout extends PureComponent<Props, State> {
-  // data = useStaticQuery()
   constructor(props: Props) {
     super(props)
-    this.state = { lightTheme: true }
-  }
-
-  componentDidMount() {
     const localStorageLayout = localStorage.getItem("lightTheme")
-    if (localStorageLayout) {
-      this.setState({ lightTheme: JSON.parse(localStorageLayout) })
+    this.state = {
+      lightTheme: localStorageLayout ? JSON.parse(localStorageLayout) : true,
     }
   }
 
