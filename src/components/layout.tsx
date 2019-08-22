@@ -2,6 +2,8 @@ import React, { ReactNode, PureComponent } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import withSizes from "react-sizes"
+import Icon from "antd/es/icon"
+import "antd/es/spin/style/css"
 import { dark, light, Theme } from "../Theme"
 import Header from "./header"
 import "./layout.css"
@@ -12,6 +14,8 @@ const LayoutEl = styled.div<{ theme: Theme }>`
   height: 100vh;
 `
 
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />
+
 interface Props {
   children: ReactNode
   isMobile: boolean
@@ -20,27 +24,22 @@ interface State {
   lightTheme: boolean
 }
 class Layout extends PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      lightTheme: true,
-    }
+  state = {
+    lightTheme: false,
   }
 
   componentDidMount() {
-    const localStorageLayout = localStorage.getItem("lightTheme")
-    if (localStorageLayout) {
-      this.setState({
-        lightTheme: JSON.parse(localStorageLayout),
-      })
+    this.setState({ lightTheme: (window as any).__theme === "light" })
+    ;(window as any).__onThemeChange = () => {
+      this.setState({ lightTheme: (window as any).__theme === "light" })
     }
   }
-  changeTheme = () => {
-    this.setState({
-      lightTheme: !this.state.lightTheme,
-    })
-    localStorage.setItem("lightTheme", !this.state.lightTheme + "")
-  }
+  // changeTheme = () => {
+  //   this.setState({
+  //     lightTheme: !this.state.lightTheme,
+  //   })
+  //   localStorage.setItem("lightTheme", this.state.lightTheme ? "light" : "dark")
+  // }
   render() {
     const { children, isMobile } = this.props
     return (
@@ -61,7 +60,17 @@ class Layout extends PureComponent<Props, State> {
               <Header
                 siteTitle={data.site.siteMetadata.title}
                 lightTheme={this.state.lightTheme}
-                changeTheme={this.changeTheme}
+                changeTheme={() => {
+                  this.setState({ lightTheme: !this.state.lightTheme }, () => {
+                    ;(window as any).__setPreferredTheme(
+                      this.state.lightTheme ? "light" : "dark"
+                    )
+                    localStorage.setItem(
+                      "lightTheme",
+                      this.state.lightTheme ? "light" : "dark"
+                    )
+                  })
+                }}
                 isMobile={this.props.isMobile}
               />
             )}

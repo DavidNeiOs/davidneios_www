@@ -24,7 +24,6 @@ const HeaderEl = styled.header<{ theme: Theme }>`
 `
 
 const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
-  console.log(MobileNav)
   return (
     <HeaderEl>
       <div
