@@ -22,14 +22,19 @@ interface Props {
 }
 interface State {
   lightTheme: boolean
+  loaded: boolean
 }
 class Layout extends PureComponent<Props, State> {
   state = {
     lightTheme: false,
+    loaded: false,
   }
 
   componentDidMount() {
-    this.setState({ lightTheme: (window as any).__theme === "light" })
+    this.setState({
+      lightTheme: (window as any).__theme === "light",
+      loaded: true,
+    })
     ;(window as any).__onThemeChange = () => {
       this.setState({ lightTheme: (window as any).__theme === "light" })
     }
@@ -42,6 +47,9 @@ class Layout extends PureComponent<Props, State> {
   // }
   render() {
     const { children, isMobile } = this.props
+    if (!this.state.loaded) {
+      return <div>LOADING...</div>
+    }
     return (
       <ThemeProvider theme={this.state.lightTheme ? light : dark}>
         <LayoutEl>
