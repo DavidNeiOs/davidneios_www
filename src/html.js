@@ -34,7 +34,7 @@ export default function HTML(props) {
                 window.__setPreferredTheme = function(newTheme) {
                   setTheme(newTheme);
                   try {
-                    localStorage.setItem('theme', newTheme);
+                    localStorage.setItem('lightTheme', newTheme);
                   } catch (err) {}
                 }
 
