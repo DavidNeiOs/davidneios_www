@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react"
+import React, { ReactNode, PureComponent } from "react"
 import styled from "styled-components"
 
 const NavWrapper = styled.div``
@@ -29,7 +29,9 @@ interface State {
   showOptions: boolean
 }
 
-interface Props {}
+interface Props {
+  children: ReactNode
+}
 
 class MobileNav extends PureComponent<Props, State> {
   constructor(props: Props) {
@@ -48,16 +50,14 @@ class MobileNav extends PureComponent<Props, State> {
     e.stopPropagation()
   }
   render() {
+    const { children } = this.props
     return (
       <>
         <NavWrapper>
           <button onClick={this.showBackdrop}>back</button>
           <Backdrop onClick={this.hideBackdrop} show={this.state.showOptions}>
             <NavBar show={this.state.showOptions} onClick={this.navBarHandler}>
-              <ul>
-                <li>heyyy</li>
-                <li>suuup?</li>
-              </ul>
+              <div>{children}</div>
             </NavBar>
           </Backdrop>
         </NavWrapper>

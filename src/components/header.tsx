@@ -45,7 +45,10 @@ const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
         </h1>
 
         {isMobile ? (
-          <MobileNav />
+          <MobileNav>
+            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+            <LanguageSwitcher />
+          </MobileNav>
         ) : (
           <div>
             <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
