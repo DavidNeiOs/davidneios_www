@@ -1,6 +1,7 @@
 import React, { ReactNode, PureComponent } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
+import withSizes from "react-sizes"
 import { dark, light, Theme } from "../Theme"
 import Header from "./header"
 import "./layout.css"
@@ -13,6 +14,7 @@ const LayoutEl = styled.div<{ theme: Theme }>`
 
 interface Props {
   children: ReactNode
+  isMobile: boolean
 }
 interface State {
   lightTheme: boolean
@@ -40,7 +42,7 @@ class Layout extends PureComponent<Props, State> {
     localStorage.setItem("lightTheme", !this.state.lightTheme + "")
   }
   render() {
-    const { children } = this.props
+    const { children, isMobile } = this.props
     return (
       <ThemeProvider theme={this.state.lightTheme ? light : dark}>
         <LayoutEl>
@@ -60,13 +62,14 @@ class Layout extends PureComponent<Props, State> {
                 siteTitle={data.site.siteMetadata.title}
                 lightTheme={this.state.lightTheme}
                 changeTheme={this.changeTheme}
+                isMobile={this.props.isMobile}
               />
             )}
           </StaticQuery>
 
           <div
             style={{
-              margin: `0 auto`,
+              margin: isMobile ? `0 0` : `0 auto`,
               maxWidth: 960,
               padding: `0px 1.0875rem 1.45rem`,
               paddingTop: 0,
@@ -81,4 +84,14 @@ class Layout extends PureComponent<Props, State> {
   }
 }
 
-export default Layout
+interface Args {
+  width: number
+}
+
+const mapSizesToProps = ({ width }: Args) => {
+  return {
+    isMobile: width < 992,
+  }
+}
+
+export default withSizes(mapSizesToProps)(Layout)

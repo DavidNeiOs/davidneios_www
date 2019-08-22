@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react"
 import styled from "styled-components"
 
-const NavWrapper = styled.div`
-  background-color: yellowgreen;
-`
+const NavWrapper = styled.div``
 
 const Backdrop = styled.div<{ show: boolean }>`
   position: fixed;

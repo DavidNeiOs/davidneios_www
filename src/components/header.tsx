@@ -10,6 +10,7 @@ interface Props {
   siteTitle: string
   changeTheme: () => void
   lightTheme: boolean
+  isMobile: boolean
 }
 
 const HeaderEl = styled.header<{ theme: Theme }>`
@@ -22,7 +23,7 @@ const HeaderEl = styled.header<{ theme: Theme }>`
   padding: 2rem;
 `
 
-const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
+const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
   console.log(MobileNav)
   return (
     <HeaderEl>
@@ -42,9 +43,15 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
             {siteTitle}
           </Link>
         </h1>
-        <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-        <LanguageSwitcher />
-        <MobileNav />
+
+        {isMobile ? (
+          <MobileNav />
+        ) : (
+          <div>
+            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+            <LanguageSwitcher />
+          </div>
+        )}
       </div>
     </HeaderEl>
   )
