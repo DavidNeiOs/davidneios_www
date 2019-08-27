@@ -25,6 +25,34 @@ const NavBar = styled.nav<{ show: boolean }>`
   height: 100vh;
 `
 
+const Burger = styled.div`
+  color: #000;
+  position: absolute;
+  margin-left: 2px;
+  margin-top: 10px;
+  width: 100%;
+  height: 2px;
+  background-color: ${props => props.theme.button};
+
+  :before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${props => props.theme.button};
+  }
+  :after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${props => props.theme.button};
+  }
+`
 interface State {
   showOptions: boolean
 }
@@ -52,16 +80,19 @@ class MobileNav extends PureComponent<Props, State> {
   render() {
     const { children } = this.props
     return (
-      <>
-        <NavWrapper>
-          <button onClick={this.showBackdrop}>back</button>
-          <Backdrop onClick={this.hideBackdrop} show={this.state.showOptions}>
-            <NavBar show={this.state.showOptions} onClick={this.navBarHandler}>
-              <div>{children}</div>
-            </NavBar>
-          </Backdrop>
-        </NavWrapper>
-      </>
+      <NavWrapper>
+        <div
+          onClick={this.showBackdrop}
+          style={{ height: "25px", width: "25px", position: "relative" }}
+        >
+          <Burger />
+        </div>
+        <Backdrop onClick={this.hideBackdrop} show={this.state.showOptions}>
+          <NavBar show={this.state.showOptions} onClick={this.navBarHandler}>
+            <div>{children}</div>
+          </NavBar>
+        </Backdrop>
+      </NavWrapper>
     )
   }
 }

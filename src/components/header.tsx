@@ -6,13 +6,6 @@ import { Theme } from "../theme"
 import LanguageSwitcher from "./languageSwitcher"
 import MobileNav from "./mobileNav"
 
-interface Props {
-  siteTitle: string
-  changeTheme: () => void
-  lightTheme: boolean
-  isMobile: boolean
-}
-
 const HeaderEl = styled.header<{ theme: Theme }>`
   background-color: ${props => props.theme.primary};
   a {
@@ -20,8 +13,15 @@ const HeaderEl = styled.header<{ theme: Theme }>`
   }
   color: ${props => props.theme.navLinks};
   z-index: 99;
-  padding: 2rem;
+  padding: 1rem;
 `
+
+interface Props {
+  siteTitle: string
+  changeTheme: () => void
+  lightTheme: boolean
+  isMobile: boolean
+}
 
 const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
   return (
@@ -30,6 +30,7 @@ const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <h1 style={{ margin: 0 }}>

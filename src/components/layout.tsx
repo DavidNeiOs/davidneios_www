@@ -2,8 +2,6 @@ import React, { ReactNode, PureComponent } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import withSizes from "react-sizes"
-import Icon from "antd/es/icon"
-import "antd/es/spin/style/css"
 import { dark, light, Theme } from "../Theme"
 import Header from "./header"
 import "./layout.css"
@@ -13,9 +11,6 @@ const LayoutEl = styled.div<{ theme: Theme }>`
   color: ${props => props.theme.text};
   height: 100vh;
 `
-
-const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />
-
 interface Props {
   children: ReactNode
   isMobile: boolean
@@ -39,12 +34,7 @@ class Layout extends PureComponent<Props, State> {
       this.setState({ lightTheme: (window as any).__theme === "light" })
     }
   }
-  // changeTheme = () => {
-  //   this.setState({
-  //     lightTheme: !this.state.lightTheme,
-  //   })
-  //   localStorage.setItem("lightTheme", this.state.lightTheme ? "light" : "dark")
-  // }
+
   render() {
     const { children, isMobile } = this.props
     if (!this.state.loaded) {
@@ -107,7 +97,7 @@ interface Args {
 
 const mapSizesToProps = ({ width }: Args) => {
   return {
-    isMobile: width < 992,
+    isMobile: width < 800,
   }
 }
 
