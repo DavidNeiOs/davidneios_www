@@ -42,7 +42,7 @@ const IndexPage = ({ intl }: Props) => (
   <Layout>
     <SEO title="Home" />
     <VideoWrapper>
-      <MainVideo muted loop id="myVideo" autoPlay>
+      <MainVideo muted loop id="myVideo" autoPlay playsinline>
         <source src={CityMp4} type="video/mp4" />
         <source src={CityWeb} type="video/webm" />
       </MainVideo>
