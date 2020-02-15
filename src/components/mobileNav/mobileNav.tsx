@@ -1,7 +1,15 @@
 import React, { ReactNode, PureComponent } from "react"
 import styled from "styled-components"
 
-const NavWrapper = styled.div``
+import { media } from "../../Theme"
+
+const NavWrapper = styled.div`
+  display: block;
+
+  @media ${media.tablet} {
+    display: none;
+  }
+`
 
 const Backdrop = styled.div<{ show: boolean }>`
   position: fixed;

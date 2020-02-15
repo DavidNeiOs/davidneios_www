@@ -27,16 +27,6 @@ declare module 'styled-components' {
       link: string
       terciary: string
     }
-    breakpoints: {
-      phone_small: number
-      phone: number
-      phablet: number
-      tablet: number
-      desktop: number
-      desktop_medium: number
-      desktop_large: number
-      desktop_xlarge: number
-    }
     shadows: {
       strong: string
       medium: string

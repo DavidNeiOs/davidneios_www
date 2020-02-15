@@ -1,7 +1,6 @@
 import React, { ReactNode, PureComponent } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
-import withSizes from "react-sizes"
 import { LightTheme, DarkTheme } from "../../Theme"
 import Header from "./header"
 import "./layout.css"
@@ -12,7 +11,6 @@ const LayoutEl = styled.div`
 `
 interface Props {
   children: ReactNode
-  isMobile: boolean
 }
 interface State {
   lightTheme: boolean
@@ -35,7 +33,7 @@ class Layout extends PureComponent<Props, State> {
   }
 
   render() {
-    const { children, isMobile } = this.props
+    const { children } = this.props
     if (!this.state.loaded) {
       return <div>LOADING...</div>
     }
@@ -68,7 +66,6 @@ class Layout extends PureComponent<Props, State> {
                     )
                   })
                 }}
-                isMobile={isMobile}
               />
             )}
           </StaticQuery>
@@ -79,14 +76,4 @@ class Layout extends PureComponent<Props, State> {
   }
 }
 
-interface Args {
-  width: number
-}
-
-const mapSizesToProps = ({ width }: Args) => {
-  return {
-    isMobile: width < 800,
-  }
-}
-
-export default withSizes(mapSizesToProps)(Layout)
+export default Layout

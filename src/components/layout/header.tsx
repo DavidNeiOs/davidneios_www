@@ -1,38 +1,17 @@
 import React from "react"
 import styled from "styled-components"
+import { media } from "../../Theme"
 import Link from "../styles/Link"
 import ToggleTheme from "../styles/ToggleTheme"
 import MobileNav from "../mobileNav"
-
-const HeaderEl = styled.header`
-  background-color: ${props => props.theme.colors.primary};
-  a {
-    color: ${props => props.theme.colors.navLinks};
-  }
-  color: ${props => props.theme.colors.navLinks};
-  z-index: 1;
-  padding: 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* ${({ theme }) => `
-  @media (min-width: ${theme.breakpoints.desktop}px) {
-    background-color: rebeccapurple;
-  }
-  @media (min-width: ${theme.breakpoints.desktop_large}px) {
-    background-color: palevioletred;
-  }`} */
-`
 
 interface Props {
   siteTitle: string
   changeTheme: () => void
   lightTheme: boolean
-  isMobile: boolean
 }
 
-const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
+const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
   return (
     <HeaderEl>
       <div
@@ -52,19 +31,34 @@ const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
             {siteTitle}
           </Link>
         </h1>
+        <MobileNav>
+          <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+        </MobileNav>
 
-        {isMobile ? (
-          <MobileNav>
-            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-          </MobileNav>
-        ) : (
-          <div>
-            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-          </div>
-        )}
+        <Nav>
+          <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+        </Nav>
       </div>
     </HeaderEl>
   )
 }
+
+const HeaderEl = styled.header`
+  background-color: ${props => props.theme.colors.primary};
+  a {
+    color: ${props => props.theme.colors.navLinks};
+  }
+  color: ${props => props.theme.colors.navLinks};
+  padding: 1rem;
+  width: 100%;
+`
+
+const Nav = styled.div`
+  display: none;
+
+  @media ${media.tablet} {
+    display: block;
+  }
+`
 
 export default Header
