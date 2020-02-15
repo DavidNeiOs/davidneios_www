@@ -2,7 +2,7 @@ import React, { SFC } from "react"
 import styled from "styled-components"
 import merge from "lodash/merge"
 
-import { TextTypes, textPresets } from "../../theme/typography"
+import { TextTypes, textPresets } from "../../theme"
 
 const TextNode = styled.span``
 
