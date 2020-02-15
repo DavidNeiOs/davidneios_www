@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import Link from "../styles/Link"
 import ToggleTheme from "../styles/ToggleTheme"
-import LanguageSwitcher from "../languageSwitcher"
 import MobileNav from "../mobileNav"
 
 const HeaderEl = styled.header`
@@ -57,12 +56,10 @@ const Header = ({ siteTitle, changeTheme, lightTheme, isMobile }: Props) => {
         {isMobile ? (
           <MobileNav>
             <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-            <LanguageSwitcher />
           </MobileNav>
         ) : (
           <div>
             <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-            <LanguageSwitcher />
           </div>
         )}
       </div>

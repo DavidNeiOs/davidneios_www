@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `DavidNeiOs`,
     description: `Personal site of David A. Neira Ospina`,
-    author: `@gatsbyjs, @davidneios`,
+    author: `@davidneios, @gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -31,15 +31,6 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-intl`,
-      options: {
-        path: `${__dirname}/src/lang`,
-        languages: [`en`, `es`, `fr`],
-        defaultLanguage: `en`,
-        redirect: true,
       },
     },
     `gatsby-plugin-typescript`,

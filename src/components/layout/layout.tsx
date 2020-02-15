@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import withSizes from "react-sizes"
 import { LightTheme, DarkTheme } from "../../Theme"
-import Header from "../header"
+import Header from "./header"
 import "./layout.css"
 
 const LayoutEl = styled.div`
