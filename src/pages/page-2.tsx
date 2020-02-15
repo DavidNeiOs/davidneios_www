@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "../components/styles/Link"
+import { Link } from "../components/link"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

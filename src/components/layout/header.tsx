@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { media } from "../../Theme"
-import Link from "../styles/Link"
-import ToggleTheme from "../styles/ToggleTheme"
-import MobileNav from "../mobileNav"
+import { media } from "../../theme"
+import { Link } from "../link"
+import { ToggleTheme } from "../toggle-theme"
+import MobileNav from "../mobile-nav"
+import { Container } from "./container"
 
 interface Props {
   siteTitle: string
@@ -14,31 +15,33 @@ interface Props {
 const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
   return (
     <HeaderEl>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-        <MobileNav>
-          <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-        </MobileNav>
+      <Container>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h3 style={{ margin: 0 }}>
+            <Link
+              to="/"
+              style={{
+                textDecoration: `none`,
+              }}
+            >
+              {siteTitle}
+            </Link>
+          </h3>
+          <MobileNav>
+            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+          </MobileNav>
 
-        <Nav>
-          <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
-        </Nav>
-      </div>
+          <Nav>
+            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+          </Nav>
+        </div>
+      </Container>
     </HeaderEl>
   )
 }

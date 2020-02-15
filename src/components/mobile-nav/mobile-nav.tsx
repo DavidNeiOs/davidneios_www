@@ -1,7 +1,51 @@
 import React, { ReactNode, PureComponent } from "react"
 import styled from "styled-components"
 
-import { media } from "../../Theme"
+import { media } from "../../theme"
+
+interface State {
+  showOptions: boolean
+}
+
+interface Props {
+  children: ReactNode
+}
+
+class MobileNav extends PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      showOptions: false,
+    }
+  }
+  showBackdrop = () => {
+    this.setState({ showOptions: true })
+  }
+  hideBackdrop = () => {
+    this.setState({ showOptions: false })
+  }
+  navBarHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    e.stopPropagation()
+  }
+  render() {
+    const { children } = this.props
+    return (
+      <NavWrapper>
+        <div
+          onClick={this.showBackdrop}
+          style={{ height: "25px", width: "25px", position: "relative" }}
+        >
+          <Burger />
+        </div>
+        <Backdrop onClick={this.hideBackdrop} show={this.state.showOptions}>
+          <NavBar show={this.state.showOptions} onClick={this.navBarHandler}>
+            <div>{children}</div>
+          </NavBar>
+        </Backdrop>
+      </NavWrapper>
+    )
+  }
+}
 
 const NavWrapper = styled.div`
   display: block;
@@ -61,48 +105,5 @@ const Burger = styled.div`
     background-color: ${props => props.theme.colors.button};
   }
 `
-interface State {
-  showOptions: boolean
-}
-
-interface Props {
-  children: ReactNode
-}
-
-class MobileNav extends PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      showOptions: false,
-    }
-  }
-  showBackdrop = () => {
-    this.setState({ showOptions: true })
-  }
-  hideBackdrop = () => {
-    this.setState({ showOptions: false })
-  }
-  navBarHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    e.stopPropagation()
-  }
-  render() {
-    const { children } = this.props
-    return (
-      <NavWrapper>
-        <div
-          onClick={this.showBackdrop}
-          style={{ height: "25px", width: "25px", position: "relative" }}
-        >
-          <Burger />
-        </div>
-        <Backdrop onClick={this.hideBackdrop} show={this.state.showOptions}>
-          <NavBar show={this.state.showOptions} onClick={this.navBarHandler}>
-            <div>{children}</div>
-          </NavBar>
-        </Backdrop>
-      </NavWrapper>
-    )
-  }
-}
 
 export default MobileNav

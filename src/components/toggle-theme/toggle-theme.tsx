@@ -153,7 +153,7 @@ interface Props {
   lightTheme: boolean
 }
 
-const ToggleTheme = ({ changeTheme, lightTheme }: Props) => (
+export const ToggleTheme = ({ changeTheme, lightTheme }: Props) => (
   <Wrapper>
     <ToggleWrapper>
       <Input type="checkbox" checked={!lightTheme} onChange={() => {}} />
@@ -233,5 +233,3 @@ const ToggleTheme = ({ changeTheme, lightTheme }: Props) => (
     </ToggleWrapper>
   </Wrapper>
 )
-
-export default ToggleTheme

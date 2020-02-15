@@ -1,8 +1,9 @@
 import React, { ReactNode, PureComponent } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
-import { LightTheme, DarkTheme } from "../../Theme"
+import { LightTheme, DarkTheme } from "../../theme"
 import Header from "./header"
+import { Container } from "./container"
 import "./layout.css"
 
 const LayoutEl = styled.div`
@@ -69,7 +70,9 @@ class Layout extends PureComponent<Props, State> {
               />
             )}
           </StaticQuery>
-          <main>{children}</main>
+          <main>
+            <Container>{children}</Container>
+          </main>
         </LayoutEl>
       </ThemeProvider>
     )
