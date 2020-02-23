@@ -1,4 +1,4 @@
-import React, { ReactNode, PureComponent } from "react"
+import React, { ReactNode, PureComponent, useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { LightTheme, DarkTheme } from "../../theme"
@@ -13,70 +13,54 @@ const LayoutEl = styled.div`
 interface Props {
   children: ReactNode
 }
-interface State {
-  lightTheme: boolean
-  loaded: boolean
-}
-class Layout extends PureComponent<Props, State> {
-  state = {
-    lightTheme: false,
-    loaded: false,
-  }
 
-  componentDidMount() {
-    this.setState({
-      lightTheme: (window as any).__theme === "light",
-      loaded: true,
-    })
+export const Layout = ({ children }: Props) => {
+  const [lightTheme, setLightTheme] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLightTheme((window as any).__theme === "light")
+    setLoaded(true)
     ;(window as any).__onThemeChange = () => {
-      this.setState({ lightTheme: (window as any).__theme === "light" })
+      setLightTheme((window as any).__theme === "light")
     }
-  }
+  }, [])
 
-  render() {
-    const { children } = this.props
-    if (!this.state.loaded) {
-      return <div>LOADING...</div>
-    }
-    return (
-      <ThemeProvider theme={this.state.lightTheme ? LightTheme : DarkTheme}>
-        <LayoutEl>
-          <StaticQuery
-            query={graphql`
-              query SiteTitleQuery {
-                site {
-                  siteMetadata {
-                    title
-                  }
+  useEffect(() => {
+    ;(window as any).__setPreferredTheme(lightTheme ? "light" : "dark")
+    localStorage.setItem("lightTheme", lightTheme ? "light" : "dark")
+  }, [lightTheme])
+
+  return !loaded ? (
+    <div>LOADING...</div>
+  ) : (
+    <ThemeProvider theme={lightTheme ? LightTheme : DarkTheme}>
+      <LayoutEl>
+        <StaticQuery
+          query={graphql`
+            query SiteTitleQuery {
+              site {
+                siteMetadata {
+                  title
                 }
               }
-            `}
-          >
-            {data => (
-              <Header
-                siteTitle={data.site.siteMetadata.title}
-                lightTheme={this.state.lightTheme}
-                changeTheme={() => {
-                  this.setState({ lightTheme: !this.state.lightTheme }, () => {
-                    ;(window as any).__setPreferredTheme(
-                      this.state.lightTheme ? "light" : "dark"
-                    )
-                    localStorage.setItem(
-                      "lightTheme",
-                      this.state.lightTheme ? "light" : "dark"
-                    )
-                  })
-                }}
-              />
-            )}
-          </StaticQuery>
-          <main>
-            <Container>{children}</Container>
-          </main>
-        </LayoutEl>
-      </ThemeProvider>
-    )
-  }
+            }
+          `}
+        >
+          {data => (
+            <Header
+              siteTitle={data.site.siteMetadata.title}
+              lightTheme={lightTheme}
+              changeTheme={() => {
+                setLightTheme(!lightTheme)
+              }}
+            />
+          )}
+        </StaticQuery>
+        <main>
+          <Container>{children}</Container>
+        </main>
+      </LayoutEl>
+    </ThemeProvider>
+  )
 }
-
-export default Layout
