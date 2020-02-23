@@ -1,4 +1,4 @@
-import React, { ReactNode, PureComponent, useState, useEffect } from "react"
+import React, { ReactNode, useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { LightTheme, DarkTheme } from "../../theme"
