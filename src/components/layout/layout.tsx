@@ -27,7 +27,13 @@ export const Layout = ({ children }: Props) => {
   }, [])
 
   useEffect(() => {
-    ;(window as any).__setPreferredTheme(lightTheme ? "light" : "dark")
+    if (!loaded) {
+      ;(window as any).__setPreferredTheme(
+        (window as any).__theme === "light" ? "light" : "dark"
+      )
+    } else {
+      ;(window as any).__setPreferredTheme(lightTheme ? "light" : "dark")
+    }
     localStorage.setItem("lightTheme", lightTheme ? "light" : "dark")
   }, [lightTheme])
 
@@ -52,7 +58,7 @@ export const Layout = ({ children }: Props) => {
               siteTitle={data.site.siteMetadata.title}
               lightTheme={lightTheme}
               changeTheme={() => {
-                setLightTheme(!lightTheme)
+                setLightTheme(isLightTheme => !isLightTheme)
               }}
             />
           )}
