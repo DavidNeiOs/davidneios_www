@@ -33,7 +33,10 @@ const IndexPage = (props: any) => {
             </Text>
           </IntroductionSection>
         </ProfileSection>
-        <Text variant="bodyLargePrimary" style={{ marginBottom: "32px" }}>
+        <Text
+          variant="bodyLargePrimary"
+          style={{ marginBottom: "32px", textAlign: "center" }}
+        >
           <Typist cursor={{ hideWhenDone: true }}>
             I develop applications in JavaScript
             <Typist.Backspace count={10} delay={3000} />
