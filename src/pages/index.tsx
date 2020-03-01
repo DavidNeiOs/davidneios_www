@@ -26,10 +26,10 @@ const IndexPage = (props: any) => {
             <Text withComponent="h1" variant="headerLargePrimarydBold">
               Hello, I'm David!
             </Text>
-            <Text variant="bodyLargePrimary" style={{ textAlign: "center" }}>
-              I'm a Software developer. Born and raised in Colombia 🇨🇴. I live
-              now in Montreal 🇨🇦 where I work at{" "}
-              <Link to={"https://upletspace.com"}>Uplet</Link>
+            <Text variant="bodyLargePrimary" style={{}}>
+              I'm a Software developer. Born and raised in Colombia. I live now
+              in Montreal 🇨🇦 where I work at{" "}
+              <Link to={"https://upletspace.com"}>Uplet</Link>.
             </Text>
           </IntroductionSection>
         </ProfileSection>
@@ -41,8 +41,9 @@ const IndexPage = (props: any) => {
           </Typist>
         </Text>
         <Text variant="bodyLargePrimary">
-          I work mostly with React and Node and I'm learning Data Scince with
-          Python at <Link to="https://www.datacamp.com/">DataCamp</Link>.
+          I have experience working with React, Node(Express) and React Native
+          for mobile development. Some of the technologies I use include Gatsby,
+          GraphQL and firebase.
         </Text>
       </PageContainer>
     </Layout>
@@ -87,7 +88,7 @@ const IntroductionSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 16px;
+  /* padding: 0 16px; */
   @media ${media.tablet} {
     margin-left: 20px;
   }
