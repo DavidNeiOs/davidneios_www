@@ -26,14 +26,14 @@ const IndexPage = (props: any) => {
             <Text withComponent="h1" variant="headerLargePrimarydBold">
               Hello, I'm David!
             </Text>
-            <Text variant="bodyLargePrimary" style={{}}>
+            <Text variant="bodyLargePrimary">
               I'm a Software developer. Born and raised in Colombia. I live now
               in Montreal 🇨🇦 where I work at{" "}
               <Link to={"https://upletspace.com"}>Uplet</Link>.
             </Text>
           </IntroductionSection>
         </ProfileSection>
-        <Text variant="bodyLargePrimary">
+        <Text variant="bodyLargePrimary" style={{ marginBottom: "32px" }}>
           <Typist cursor={{ hideWhenDone: true }}>
             I develop applications in JavaScript
             <Typist.Backspace count={10} delay={3000} />
