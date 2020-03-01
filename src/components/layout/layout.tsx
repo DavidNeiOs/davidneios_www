@@ -38,6 +38,7 @@ export const Layout = ({ children }: Props) => {
   }, [lightTheme])
 
   return !loaded ? (
+    // TODO CREATE A LOADING SCREEN HERE
     <div>LOADING...</div>
   ) : (
     <ThemeProvider theme={lightTheme ? LightTheme : DarkTheme}>

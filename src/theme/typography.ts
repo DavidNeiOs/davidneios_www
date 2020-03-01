@@ -59,8 +59,8 @@ export const textPresets = {
   },
   bodyLargePrimary: {
     fontFamily: FontFamilies.sansSerif,
-    fontSize: `${fontSizes[3]}px`,
-    lineHeight: `${lineHeights[3]}px`,
+    fontSize: `${fontSizes[4]}px`,
+    lineHeight: `${lineHeights[4]}px`,
     fontWeight: FontWeights.regular,
   },
   bodyMediumPrimary: {

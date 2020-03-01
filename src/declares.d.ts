@@ -13,6 +13,7 @@ declare module 'gatsby-plugin-intl' {
   export const IntlContextConsumer: React.Consumer;
 }
 declare module 'react-sizes';
+declare module 'react-typist';
 
 // extend them!
 declare module 'styled-components' {

@@ -14,7 +14,7 @@ interface TextProps {
   withComponent?: any
 }
 
-const Text: SFC<TextProps> = ({
+export const Text: SFC<TextProps> = ({
   text,
   children,
   style = {},
@@ -22,7 +22,7 @@ const Text: SFC<TextProps> = ({
   withComponent,
 }) => {
   const content = text || children
-  const finalStyle = merge({}, textPresets[variant], style)
+  const finalStyle = merge({ margin: "8px 0" }, textPresets[variant], style)
 
   return (
     <TextNode style={finalStyle} as={withComponent}>
@@ -30,5 +30,3 @@ const Text: SFC<TextProps> = ({
     </TextNode>
   )
 }
-
-export default Text
