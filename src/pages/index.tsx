@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import Typist from "react-typist"
 
 import { Layout } from "../components/layout"
@@ -23,12 +23,16 @@ const IndexPage = (props: any) => {
             />
           </ImgContainer>
           <IntroductionSection>
-            <Text withComponent="h1" variant="headerLargePrimarydBold">
+            <Text
+              withComponent="h1"
+              variant="headerLargePrimarydBold"
+              animation={moveInTop}
+            >
               Hello, I'm David!
             </Text>
             <Text variant="bodyLargePrimary">
-              I'm a Software developer. Born and raised in Colombia. I live now
-              in Montreal 🇨🇦 where I work at{" "}
+              I'm a <strong>Software developer</strong>. Born and raised in
+              Colombia. I live now in Montreal 🇨🇦 where I work at{" "}
               <Link to={"https://upletspace.com"}>Uplet</Link>.
             </Text>
           </IntroductionSection>
@@ -37,7 +41,7 @@ const IndexPage = (props: any) => {
           variant="bodyLargePrimary"
           style={{ marginBottom: "32px", textAlign: "center" }}
         >
-          <Typist cursor={{ hideWhenDone: true }}>
+          <Typist cursor={{ hideWhenDone: true }} startDelay={1000}>
             I develop applications in JavaScript
             <Typist.Backspace count={10} delay={3000} />
             <span>TypeScript</span>
@@ -94,6 +98,17 @@ const IntroductionSection = styled.div`
   /* padding: 0 16px; */
   @media ${media.tablet} {
     margin-left: 20px;
+  }
+`
+
+const moveInTop = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-20px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
   }
 `
 export default IndexPage

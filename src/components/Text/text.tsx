@@ -1,10 +1,12 @@
 import React, { SFC } from "react"
-import styled from "styled-components"
+import styled, { Keyframes } from "styled-components"
 import merge from "lodash/merge"
 
 import { TextTypes, textPresets } from "../../theme"
 
-const TextNode = styled.span``
+const TextNode = styled.span<{ animation?: Keyframes }>`
+  animation: ${props => props.animation} 1s ease-in;
+`
 
 interface TextProps {
   variant?: TextTypes
@@ -12,6 +14,7 @@ interface TextProps {
   style?: React.CSSProperties
   children?: React.ReactNode
   withComponent?: any
+  animation?: Keyframes
 }
 
 export const Text: SFC<TextProps> = ({
@@ -20,12 +23,13 @@ export const Text: SFC<TextProps> = ({
   style = {},
   variant = "default",
   withComponent,
+  animation,
 }) => {
   const content = text || children
   const finalStyle = merge({ margin: "8px 0" }, textPresets[variant], style)
 
   return (
-    <TextNode style={finalStyle} as={withComponent}>
+    <TextNode style={finalStyle} as={withComponent} animation={animation}>
       {content}
     </TextNode>
   )
