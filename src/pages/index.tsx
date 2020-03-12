@@ -30,7 +30,7 @@ const IndexPage = (props: any) => {
             >
               Hello, I'm David!
             </Text>
-            <Text variant="bodyLargePrimary">
+            <Text variant="bodyLargePrimary" withComponent="p">
               I'm a <strong>Software developer</strong>. Born and raised in
               Colombia. I live now in Montreal 🇨🇦 where I work at{" "}
               <Link to={"https://upletspace.com"}>Uplet</Link>.
@@ -40,10 +40,12 @@ const IndexPage = (props: any) => {
         <Text
           variant="bodyLargePrimary"
           style={{ marginBottom: "32px", textAlign: "center" }}
+          withComponent="h3"
         >
-          <Typist cursor={{ hideWhenDone: true }} startDelay={1000}>
-            I develop applications in JavaScript
-            <Typist.Backspace count={10} delay={3000} />
+          <span style={{ display: "block" }}>I develop applications in </span>
+          <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
+            <span>JavaScript</span>
+            <Typist.Backspace count={10} delay={2000} />
             <span>TypeScript</span>
           </Typist>
         </Text>

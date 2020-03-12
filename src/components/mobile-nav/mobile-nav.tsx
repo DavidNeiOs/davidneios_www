@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const MobileNav = ({ children }: Props) => {
-  const [showOptions, setShowOptions] = useState(false)
+  const [showOptions, setShowOptions] = useState<boolean>(false)
 
   const showBackdrop = () => {
     setShowOptions(true)
@@ -30,10 +30,9 @@ export const MobileNav = ({ children }: Props) => {
       >
         <Burger />
       </div>
-      <Backdrop onClick={hideBackdrop} show={showOptions}>
-        <NavBar show={showOptions} onClick={navBarHandler}>
-          <div>{children}</div>
-        </NavBar>
+      <CheckBox type="checkbox" checked={showOptions} readOnly />
+      <Backdrop onClick={hideBackdrop}>
+        <NavBar onClick={navBarHandler}>{children}</NavBar>
       </Backdrop>
     </NavWrapper>
   )
@@ -47,19 +46,32 @@ const NavWrapper = styled.div`
   }
 `
 
-const Backdrop = styled.div<{ show: boolean }>`
+const CheckBox = styled.input`
+  display: none;
+
+  :checked + div {
+    opacity: 1;
+    transform: translateX(0);
+    & nav {
+      transform: translateX(0);
+    }
+  }
+`
+
+const Backdrop = styled.div`
   position: fixed;
-  display: ${props => (props.show ? "block" : "none")};
   top: 0;
   left: 0;
   z-index: 10;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: opacity 0.4s;
 `
 
-const NavBar = styled.nav<{ show: boolean }>`
-  display: ${props => (props.show ? "block" : "none")};
+const NavBar = styled.nav`
   position: fixed;
   z-index: 11;
   top: 0;
@@ -67,6 +79,8 @@ const NavBar = styled.nav<{ show: boolean }>`
   background: ${props => props.theme.colors.navBackground};
   width: 60%;
   height: 100vh;
+  transform: translateX(100%);
+  transition: transform 0.2s 0.2s;
 `
 
 const Burger = styled.div`
@@ -78,7 +92,7 @@ const Burger = styled.div`
   height: 2px;
   background-color: ${props => props.theme.colors.button};
 
-  :before {
+  ::before {
     content: "";
     position: absolute;
     top: -6px;
@@ -87,7 +101,7 @@ const Burger = styled.div`
     height: 2px;
     background-color: ${props => props.theme.colors.button};
   }
-  :after {
+  ::after {
     content: "";
     position: absolute;
     top: 7px;
