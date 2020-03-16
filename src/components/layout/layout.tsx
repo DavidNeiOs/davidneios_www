@@ -9,6 +9,7 @@ import "./layout.css"
 const LayoutEl = styled.div`
   background-color: ${props => props.theme.colors.innerBackground};
   color: ${props => props.theme.colors.text};
+  min-height: 100vh;
 `
 interface Props {
   children: ReactNode

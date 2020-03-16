@@ -49,11 +49,13 @@ const NavWrapper = styled.div`
 const CheckBox = styled.input`
   display: none;
 
-  :checked + div {
-    opacity: 1;
-    transform: translateX(0);
-    & nav {
+  :checked {
+    + div {
+      opacity: 1;
       transform: translateX(0);
+      & nav {
+        transform: translateX(0);
+      }
     }
   }
 `
