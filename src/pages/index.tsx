@@ -6,7 +6,6 @@ import Typist from "react-typist"
 
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
-import { Link } from "../components/link"
 import SEO from "../components/seo"
 import { media } from "../theme"
 
@@ -17,10 +16,7 @@ const IndexPage = (props: any) => {
       <PageContainer>
         <ProfileSection>
           <ImgContainer>
-            <Img
-              fluid={props.data.profile_img.childImageSharp.fluid}
-              style={{ borderRadius: "50%" }}
-            />
+            <Img fluid={props.data.profile_img.childImageSharp.fluid} />
           </ImgContainer>
           <IntroductionSection>
             <Title withComponent="h1" variant="heading1Bold">
@@ -28,23 +24,26 @@ const IndexPage = (props: any) => {
             </Title>
             <Text variant="bodyLargePrimary" withComponent="p">
               I'm a <strong>Software developer</strong>. Born and raised in
-              Colombia. I live now in Montreal 🇨🇦 where I work at{" "}
-              <Link to={"https://upletspace.com"}>Uplet</Link>.
+              Colombia. I live now in Montreal 🇨🇦. I have over a year experience
+              and I'm now looking for new opportunities working with a team that
+              is commited to make a difference.
             </Text>
           </IntroductionSection>
         </ProfileSection>
-        <Text
-          variant="heading3"
-          withComponent="h3"
-          style={{ textAlign: "center" }}
-        >
-          <Text>I develop applications in </Text>
-          <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
-            <Text>JavaScript</Text>
-            <Typist.Backspace count={10} delay={2000} />
-            <Text>TypeScript</Text>
-          </Typist>
-        </Text>
+        <SubTitle>
+          <Text
+            variant="heading3"
+            withComponent="h3"
+            style={{ textAlign: "center" }}
+          >
+            <Text>I develop applications in </Text>
+            <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
+              <Text>JavaScript</Text>
+              <Typist.Backspace count={10} delay={2000} />
+              <Text>TypeScript</Text>
+            </Typist>
+          </Text>
+        </SubTitle>
         <Text variant="bodyLargePrimary">
           I have experience working with React, Node(Express) and React Native
           for mobile development. Some of the technologies I use include Gatsby,
@@ -82,6 +81,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 `
 
 const ProfileSection = styled.div`
@@ -89,19 +89,21 @@ const ProfileSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0;
+  margin-top: 2rem;
 
   @media ${media.tablet} {
-    margin: 4rem 0;
+    margin-top: 4rem;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 `
 
 const ImgContainer = styled.div`
   width: 15rem;
   margin-bottom: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
 
   @media ${media.phablet} {
     width: 20rem;
@@ -110,11 +112,6 @@ const ImgContainer = styled.div`
   @media ${media.tablet} {
     margin-bottom: 0;
   }
-`
-
-const Title = styled(Text)`
-  animation: ${moveInTop} 1s ease-in;
-  margin-bottom: 1.6rem;
 `
 
 const IntroductionSection = styled.div`
@@ -126,10 +123,42 @@ const IntroductionSection = styled.div`
 
   @media ${media.tablet} {
     margin-left: 20px;
+    flex: 0 0 70%;
   }
 
   @media ${media.desktop_large} {
     margin-left: 0;
   }
 `
+
+const Title = styled(Text)`
+  animation: ${moveInTop} 1s ease-in;
+  margin-bottom: 1.6rem;
+  text-align: center;
+
+  @media ${media.tablet} {
+  }
+`
+
+const SubTitle = styled.div`
+  margin: 2rem 0;
+  @media ${media.phablet} {
+    align-self: stretch;
+
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+    grid-column-gap: 2.5rem;
+
+    &::before,
+    &::after {
+      content: "";
+      height: 2px;
+      display: block;
+      background-color: ${props => props.theme.colors.text};
+    }
+  }
+`
+
 export default IndexPage

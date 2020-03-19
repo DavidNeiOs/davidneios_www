@@ -1,9 +1,14 @@
 import { createGlobalStyle } from "styled-components";
+import { media } from "./breakpoints"
 
 export const Base = createGlobalStyle`
   html {
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: 50%;
+
+    @media ${media.phablet} {
+      font-size: 62.5%;
+    } 
   }
 
   body {
