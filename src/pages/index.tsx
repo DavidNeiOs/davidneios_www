@@ -6,6 +6,7 @@ import Typist from "react-typist"
 
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
+import { Link } from "../components/link"
 import SEO from "../components/seo"
 import { media } from "../theme"
 
@@ -25,9 +26,16 @@ const IndexPage = (props: any) => {
             <Text variant="bodyLargePrimary" withComponent="p">
               I'm a <strong>Software developer</strong>. Born and raised in
               Colombia. I live now in Montreal 🇨🇦. I have over a year experience
-              and I'm now looking for new opportunities working with a team that
-              is commited to make a difference.
+              as a Full-Stack Developer and I'm now looking for new
+              opportunities working with a team that is commited to make a
+              difference.
             </Text>
+            <Link
+              to="/about"
+              style={{ alignSelf: "flex-end", marginTop: "1rem" }}
+            >
+              <Text variant="bodyMediumPrimary">Learn more &rarr;</Text>
+            </Link>
           </IntroductionSection>
         </ProfileSection>
         <SubTitle>
@@ -44,7 +52,7 @@ const IndexPage = (props: any) => {
             </Typist>
           </Text>
         </SubTitle>
-        <Text variant="bodyLargePrimary">
+        <Text variant="bodyLargePrimary" withComponent="p">
           I have experience working with React, Node(Express) and React Native
           for mobile development. Some of the technologies I use include Gatsby,
           GraphQL and firebase.

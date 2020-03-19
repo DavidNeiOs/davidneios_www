@@ -9,44 +9,49 @@ interface LinkProps {
   className?: string
 }
 
-export const Link = ({ children, to, style, className }: LinkProps) => {
+const LinkCmp = ({ children, to, style, className }: LinkProps) => {
   if (!to.startsWith("/")) {
     return (
-      <OuterLink
+      <a
         href={to}
         target="_blank"
         style={style && style}
         className={className && className}
       >
         {children}
-      </OuterLink>
+      </a>
     )
   }
   return (
-    <InnerLink
+    <GatsbyLink
       to={to}
-      className={className && className}
       style={style && style}
+      className={className && className}
     >
       {children}
-    </InnerLink>
+    </GatsbyLink>
   )
 }
 
-const InnerLink = styled(GatsbyLink)`
+export const Link = styled(LinkCmp)`
   &:link,
   &:visited {
     color: ${props => props.theme.colors.navLinks};
     text-decoration: none;
-    color: ${props => props.theme.colors.navLinks};
+    transition: all 0.2s;
+    padding: 2px 4px;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.innerBackground};
+    background-color: ${props => props.theme.colors.navLinks};
   }
 `
 
-const OuterLink = styled.a`
+export const NavLink = styled(LinkCmp)`
   &:link,
   &:visited {
     color: ${props => props.theme.colors.navLinks};
     text-decoration: none;
-    color: ${props => props.theme.colors.navLinks};
   }
 `

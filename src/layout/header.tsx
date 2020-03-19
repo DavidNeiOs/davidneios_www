@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { media } from "../theme"
-import { Link } from "../components/link"
+import { NavLink } from "../components/link"
 import { Text } from "../components/Text"
 import { ToggleTheme } from "../components/toggle-theme"
 import MobileNav from "../components/mobile-nav"
@@ -25,14 +25,14 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
           }}
         >
           <Text variant="heading3" withComponent="h3" style={{ margin: 0 }}>
-            <Link
+            <NavLink
               to="/"
               style={{
                 textDecoration: `none`,
               }}
             >
               {siteTitle}
-            </Link>
+            </NavLink>
           </Text>
           <MobileNav>
             <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />

@@ -1,11 +1,10 @@
 import { DefaultTheme } from "styled-components";
-import { media } from "./breakpoints"
 
 const LightTheme: DefaultTheme = {
   colors: {
     primary: "#464D77", // purple navy
     innerBackground: "#FAFAFA", // white less bright
-    navLinks: "#F9DB6D", // orange-yellow(crayola)
+    navLinks: "#DEC364", // orange-yellow(crayola)
     text: "#121212", // black back
     navBackground: "#F9F9ED", // linen
     button: "#DBF9F0", // light cyan
