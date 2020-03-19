@@ -1,79 +1,72 @@
-export enum FontFamilies {
-  serif = '"Palatino Linotype", "Book Antiqua", Palatino, serif',
-  sansSerif = '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
-}
-
 export enum FontWeights {
   light = "300",
-  regular = "normal",
-  medium = "500",
   semiBold = "600",
   bold = "bold",
 }
 
-export const fontSizes = [12, 14, 16, 18, 24, 32, 40, 64, 96]
-export const lineHeights = [18, 20, 22, 24, 32, 40, 48, 72, 106]
 
 export const textPresets = {
   default: {},
-  headerLargePrimary: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[6]}px`,
-    lineHeight: `${lineHeights[6]}px`,
-    fontWeight: FontWeights.medium,
+  heading1: {
+    fontSize: "4.5rem",
+    lineHeight: 1,
+    fontWeight: FontWeights.light,
   },
-  headerLargePrimarydBold: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[6]}px`,
-    lineHeight: `${lineHeights[6]}px`,
+  heading1Bold: {
+    fontSize: "4.5rem",
+    lineHeight: 1,
     fontWeight: FontWeights.bold,
   },
-  headerMediumPrimary: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[5]}px`,
-    lineHeight: `${lineHeights[5]}px`,
-    fontWeight: FontWeights.medium,
+  heading2: {
+    fontSize: "4rem",
+    lineHeight: 1,
+    fontWeight: FontWeights.light,
   },
-  headerMediumPrimaryBold: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[5]}px`,
-    lineHeight: `${lineHeights[5]}px`,
+  heading2Bold: {
+    fontSize: "4rem",
+    lineHeight: 1,
     fontWeight: FontWeights.bold,
   },
-  headerSmallPrimary: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[4]}px`,
-    lineHeight: `${lineHeights[4]}px`,
-    fontWeight: FontWeights.semiBold,
-  },
-  headerSmallPrimaryBold: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[4]}px`,
-    lineHeight: `${lineHeights[4]}px`,
+  heading3: {
+    fontSize: "2.5rem",
+    lineHeight: 1.6,
     fontWeight: FontWeights.bold,
   },
-  bodyLargeBoldPrimary: {
-    fontSize: `${fontSizes[4]}px`,
-    lineHeight: `${lineHeights[4]}px`,
+  heading3Bold: {
+    fontSize: "2.5rem",
+    lineHeight: 1.6,
+    fontWeight: FontWeights.bold,
+  },
+  heading4: {
+    fontSize: "1.9rem",
+    lineHeight: 1.6,
+    fontWeight: FontWeights.bold,
+  },
+  heading4Bold: {
+    fontSize: "1.9rem",
+    lineHeight: 1.6,
     fontWeight: FontWeights.bold,
   },
   bodyLargePrimary: {
-    fontFamily: FontFamilies.sansSerif,
-    fontSize: `${fontSizes[4]}px`,
-    lineHeight: `${lineHeights[4]}px`,
-    fontWeight: FontWeights.regular,
+    fontFamily: "Raleway",
+    fontSize: "2rem",
+    fontWeight: FontWeights.light,
+  },
+  bodyLargeBoldPrimary: {
+    fontFamily: "Raleway",
+    fontSize: "2rem",
+    fontWeight: FontWeights.bold,
   },
   bodyMediumPrimary: {
-    fontFamily: FontFamilies.serif,
-    fontSize: `${fontSizes[2]}px`,
-    lineHeight: `${lineHeights[2]}px`,
-    fontWeight: FontWeights.semiBold,
+    fontFamily: "Raleway",
+    fontSize: "1.6rem",
+    lineHeight: "",
+    fontWeight: FontWeights.light,
   },
   bodySmallPrimary: {
-    fontFamily: FontFamilies.sansSerif,
-    fontSize: `${fontSizes[1]}px`,
-    lineHeight: `${lineHeights[1]}px`,
-    fontWeight: FontWeights.regular,
+    fontFamily: "Raleway",
+    fontSize: "1.4rem",
+    fontWeight: FontWeights.light,
   },
 }
 export type TextTypes = keyof typeof textPresets

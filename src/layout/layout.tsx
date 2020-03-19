@@ -1,10 +1,10 @@
 import React, { ReactNode, useState, useEffect } from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
-import { LightTheme, DarkTheme } from "../../theme"
+import { LightTheme, DarkTheme } from "../theme"
 import Header from "./header"
 import { Container } from "./container"
-import "./layout.css"
+import { Base } from "../theme"
 
 const LayoutEl = styled.div`
   background-color: ${props => props.theme.colors.innerBackground};
@@ -43,6 +43,7 @@ export const Layout = ({ children }: Props) => {
     <div>LOADING...</div>
   ) : (
     <ThemeProvider theme={lightTheme ? LightTheme : DarkTheme}>
+      <Base />
       <LayoutEl>
         <StaticQuery
           query={graphql`

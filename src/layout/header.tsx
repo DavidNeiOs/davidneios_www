@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { media } from "../../theme"
-import { Link } from "../link"
-import { ToggleTheme } from "../toggle-theme"
-import MobileNav from "../mobile-nav"
+import { media } from "../theme"
+import { Link } from "../components/link"
+import { Text } from "../components/Text"
+import { ToggleTheme } from "../components/toggle-theme"
+import MobileNav from "../components/mobile-nav"
 import { Container } from "./container"
 
 interface Props {
@@ -23,7 +24,7 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
             alignItems: "center",
           }}
         >
-          <h3 style={{ margin: 0 }}>
+          <Text variant="heading3" withComponent="h3" style={{ margin: 0 }}>
             <Link
               to="/"
               style={{
@@ -32,7 +33,7 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
             >
               {siteTitle}
             </Link>
-          </h3>
+          </Text>
           <MobileNav>
             <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
           </MobileNav>

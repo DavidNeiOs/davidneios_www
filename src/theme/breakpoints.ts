@@ -9,15 +9,13 @@ const breakpoints = {
   desktop_xlarge: '1920px'
 }
 
-const media = {
-  phone_small: `(min-width: ${breakpoints.phone_small})`,
-  phone: `(min-width: ${breakpoints.phone})`,
-  phablet: `(min-width: ${breakpoints.phablet})`,
-  tablet: `(min-width: ${breakpoints.tablet})`,
-  desktop: `(min-width: ${breakpoints.desktop})`,
-  desktop_medium: `(min-width: ${breakpoints.desktop_medium})`,
-  desktop_large: `(min-width: ${breakpoints.desktop_large})`,
-  desktop_xlarge: `(min-width: ${breakpoints.desktop_xlarge})`
+export const media = {
+  phone_small: `only screen and (min-width: ${breakpoints.phone_small})`,
+  phone: `only screen and (min-width: ${breakpoints.phone})`,
+  phablet: `only screen and (min-width: ${breakpoints.phablet})`,
+  tablet: `only screen and (min-width: ${breakpoints.tablet})`,
+  desktop: `only screen and (min-width: ${breakpoints.desktop})`,
+  desktop_medium: `only screen and (min-width: ${breakpoints.desktop_medium})`,
+  desktop_large: `only screen and (min-width: ${breakpoints.desktop_large})`,
+  desktop_xlarge: `only screen and (min-width: ${breakpoints.desktop_xlarge})`
 };
-
-export { media }

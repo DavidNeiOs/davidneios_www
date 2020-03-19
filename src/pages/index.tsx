@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import styled, { keyframes } from "styled-components"
 import Typist from "react-typist"
 
-import { Layout } from "../components/layout"
+import { Layout } from "../layout"
 import { Text } from "../components/Text"
 import { Link } from "../components/link"
 import SEO from "../components/seo"
@@ -23,13 +23,9 @@ const IndexPage = (props: any) => {
             />
           </ImgContainer>
           <IntroductionSection>
-            <Text
-              withComponent="h1"
-              variant="headerLargePrimarydBold"
-              animation={moveInTop}
-            >
+            <Title withComponent="h1" variant="heading1Bold">
               Hello, I'm David!
-            </Text>
+            </Title>
             <Text variant="bodyLargePrimary" withComponent="p">
               I'm a <strong>Software developer</strong>. Born and raised in
               Colombia. I live now in Montreal 🇨🇦 where I work at{" "}
@@ -38,15 +34,15 @@ const IndexPage = (props: any) => {
           </IntroductionSection>
         </ProfileSection>
         <Text
-          variant="bodyLargePrimary"
-          style={{ marginBottom: "32px", textAlign: "center" }}
+          variant="heading3"
           withComponent="h3"
+          style={{ textAlign: "center" }}
         >
-          <span style={{ display: "block" }}>I develop applications in </span>
+          <Text>I develop applications in </Text>
           <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
-            <span>JavaScript</span>
+            <Text>JavaScript</Text>
             <Typist.Backspace count={10} delay={2000} />
-            <span>TypeScript</span>
+            <Text>TypeScript</Text>
           </Typist>
         </Text>
         <Text variant="bodyLargePrimary">
@@ -71,38 +67,6 @@ export const INDEX_QUERY = graphql`
   }
 `
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const ProfileSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 32px 0;
-
-  @media ${media.tablet} {
-    flex-direction: row;
-    align-items: center;
-  }
-`
-
-const ImgContainer = styled.div`
-  width: 203px;
-  margin: 20px auto;
-`
-
-const IntroductionSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* padding: 0 16px; */
-  @media ${media.tablet} {
-    margin-left: 20px;
-  }
-`
-
 const moveInTop = keyframes`
   0% {
     opacity: 0;
@@ -111,6 +75,61 @@ const moveInTop = keyframes`
   100% {
     opacity: 1;
     transform: translateY(0)
+  }
+`
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const ProfileSection = styled.div`
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+
+  @media ${media.tablet} {
+    margin: 4rem 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`
+
+const ImgContainer = styled.div`
+  width: 15rem;
+  margin-bottom: 2rem;
+
+  @media ${media.phablet} {
+    width: 20rem;
+  }
+
+  @media ${media.tablet} {
+    margin-bottom: 0;
+  }
+`
+
+const Title = styled(Text)`
+  animation: ${moveInTop} 1s ease-in;
+  margin-bottom: 1.6rem;
+`
+
+const IntroductionSection = styled.div`
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media ${media.tablet} {
+    margin-left: 20px;
+  }
+
+  @media ${media.desktop_large} {
+    margin-left: 0;
   }
 `
 export default IndexPage

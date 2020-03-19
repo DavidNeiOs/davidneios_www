@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { media } from "../../theme"
+import { media } from "../theme"
 
 export const Container = styled.div`
-  max-width: 46rem;
+  max-width: 120rem;
   margin: auto;
   padding: 0 8px;
   @media ${media.tablet} {

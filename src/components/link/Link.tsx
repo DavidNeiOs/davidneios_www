@@ -34,16 +34,20 @@ export const Link = ({ children, to, style, className }: LinkProps) => {
   )
 }
 
-const InnerLink = styled(GatsbyLink)<{ theme: DefaultTheme }>`
-  color: ${props => props.theme.colors.navLinks};
-  :visited {
+const InnerLink = styled(GatsbyLink)`
+  &:link,
+  &:visited {
+    color: ${props => props.theme.colors.navLinks};
+    text-decoration: none;
     color: ${props => props.theme.colors.navLinks};
   }
 `
 
-const OuterLink = styled.a<{ theme: DefaultTheme }>`
-  color: ${props => props.theme.colors.navLinks};
-  :visited {
+const OuterLink = styled.a`
+  &:link,
+  &:visited {
+    color: ${props => props.theme.colors.navLinks};
+    text-decoration: none;
     color: ${props => props.theme.colors.navLinks};
   }
 `
