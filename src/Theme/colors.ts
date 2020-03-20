@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-const LightTheme: DefaultTheme = {
+export const LightTheme: DefaultTheme = {
   colors: {
     primary: "#464D77", // purple navy
     innerBackground: "#FAFAFA", // white less bright
@@ -18,7 +18,7 @@ const LightTheme: DefaultTheme = {
   }
 }
 
-const DarkTheme: DefaultTheme = {
+export const DarkTheme: DefaultTheme = {
   colors: {
     primary: "#210124", // purple navy
     innerBackground: "#0D0D0D", // dark purple
@@ -35,5 +35,3 @@ const DarkTheme: DefaultTheme = {
     strong: "rgba(0, 0, 0, 0.7)"
   }
 }
-
-export { LightTheme, DarkTheme }
