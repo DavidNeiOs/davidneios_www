@@ -150,13 +150,13 @@ const Input = styled.input`
 
 interface Props {
   changeTheme: () => void
-  lightTheme: boolean
+  theme: string
 }
 
-export const ToggleTheme = ({ changeTheme, lightTheme }: Props) => (
+export const ToggleTheme = ({ changeTheme, theme }: Props) => (
   <Wrapper>
     <ToggleWrapper>
-      <Input type="checkbox" checked={!lightTheme} onChange={() => {}} />
+      <Input type="checkbox" checked={theme === "dark"} onChange={() => {}} />
       <LabelToggle className="toggle" onClick={changeTheme}>
         <ToggleHandler className="toggle__handler">
           <Crater

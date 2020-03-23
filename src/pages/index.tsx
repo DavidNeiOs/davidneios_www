@@ -164,7 +164,7 @@ const SubTitle = styled.div`
       content: "";
       height: 2px;
       display: block;
-      background-color: ${props => props.theme.colors.text};
+      background-color: var(--text);
     }
   }
 `

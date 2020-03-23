@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { media } from "../theme"
 import { NavLink } from "../components/link"
@@ -9,11 +9,29 @@ import { Container } from "./container"
 
 interface Props {
   siteTitle: string
-  changeTheme: () => void
-  lightTheme: boolean
 }
 
-const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
+const Header = ({ siteTitle }: Props) => {
+  let websiteTheme: any
+  if (typeof window !== "undefined") {
+    websiteTheme = (window as any).__theme
+  }
+
+  const [theme, setTheme] = useState(websiteTheme)
+
+  useEffect(() => {
+    setTheme((window as any).__theme)
+    ;(window as any).__onThemeChange = () => {
+      setTheme((window as any).__theme)
+    }
+  }, [])
+
+  const themeToggle = () => {
+    ;(window as any).__setPreferredTheme(
+      websiteTheme === "dark" ? "light" : "dark"
+    )
+  }
+
   return (
     <HeaderEl>
       <Container>
@@ -35,11 +53,11 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
             </NavLink>
           </Text>
           <MobileNav>
-            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+            <ToggleTheme changeTheme={themeToggle} theme={theme} />
           </MobileNav>
 
           <Nav>
-            <ToggleTheme changeTheme={changeTheme} lightTheme={lightTheme} />
+            <ToggleTheme changeTheme={themeToggle} theme={theme} />
           </Nav>
         </div>
       </Container>
@@ -48,11 +66,11 @@ const Header = ({ siteTitle, changeTheme, lightTheme }: Props) => {
 }
 
 const HeaderEl = styled.header`
-  background-color: ${props => props.theme.colors.primary};
+  background-color: var(--primary);
   a {
-    color: ${props => props.theme.colors.navLinks};
+    color: var(--nav-links);
   }
-  color: ${props => props.theme.colors.navLinks};
+  color: var(--nav-links);
   padding: 1rem;
   width: 100%;
 `

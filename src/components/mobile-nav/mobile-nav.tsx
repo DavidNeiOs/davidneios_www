@@ -78,7 +78,7 @@ const NavBar = styled.nav`
   z-index: 11;
   top: 0;
   right: 0;
-  background: ${props => props.theme.colors.navBackground};
+  background: var(--nav-background);
   width: 60%;
   height: 100vh;
   transform: translateX(100%);
@@ -92,7 +92,7 @@ const Burger = styled.div`
   margin-top: 10px;
   width: 100%;
   height: 2px;
-  background-color: ${props => props.theme.colors.button};
+  background-color: var(--button);
 
   ::before {
     content: "";
@@ -101,7 +101,7 @@ const Burger = styled.div`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: ${props => props.theme.colors.button};
+    background-color: var(--button);
   }
   ::after {
     content: "";
@@ -110,7 +110,7 @@ const Burger = styled.div`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: ${props => props.theme.colors.button};
+    background-color: var(--button);
   }
 `
 

@@ -36,22 +36,22 @@ const LinkCmp = ({ children, to, style, className }: LinkProps) => {
 export const Link = styled(LinkCmp)`
   &:link,
   &:visited {
-    color: ${props => props.theme.colors.navLinks};
+    color: var(--nav-links);
     text-decoration: none;
     transition: all 0.2s;
     padding: 2px 4px;
   }
 
   &:hover {
-    color: ${props => props.theme.colors.innerBackground};
-    background-color: ${props => props.theme.colors.navLinks};
+    color: var(--inner-background);
+    background-color: var(--nav-links);
   }
 `
 
 export const NavLink = styled(LinkCmp)`
   &:link,
   &:visited {
-    color: ${props => props.theme.colors.navLinks};
+    color: var(--nav-links);
     text-decoration: none;
   }
 `
