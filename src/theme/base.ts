@@ -30,7 +30,7 @@ export const Base = createGlobalStyle`
       --link: #750D37;
       --terciary: #B3DEC1;
 
-      --shadow-light: rgba(250, 250, 250, 0.3);
+      --shadow-light: rgba(250, 250, 250, 0.2);
       --shadow-medium: rgba(250, 250, 250, 0.5);
       --shadow-strong: rgba(250, 250, 250, 0.7);
     }

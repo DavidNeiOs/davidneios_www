@@ -55,8 +55,16 @@ const IndexPage = (props: any) => {
         <Text variant="bodyLargePrimary" withComponent="p">
           I have experience working with React, Node(Express) and React Native
           for mobile development. Some of the technologies I use include Gatsby,
-          GraphQL and firebase.
+          GraphQL and Firebase. I have projects that vary in focus from only
+          styling to full-stack applications. I love to learn best practices and
+          write clean code that is understandable and scalabe at the moment I'm
+          going through{" "}
+          <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
+          Kent C. Dodds.
         </Text>
+        <Link to="/about" style={{ alignSelf: "flex-end", marginTop: "1rem" }}>
+          <Text variant="bodyMediumPrimary">See more &rarr;</Text>
+        </Link>
       </PageContainer>
     </Layout>
   )
@@ -103,7 +111,7 @@ const ProfileSection = styled.div`
     margin-top: 4rem;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 `
 
@@ -130,8 +138,8 @@ const IntroductionSection = styled.div`
   justify-content: center;
 
   @media ${media.tablet} {
-    margin-left: 20px;
-    flex: 0 0 70%;
+    align-items: flex-start;
+    flex: 0 0 80%;
   }
 
   @media ${media.desktop_large} {
@@ -142,10 +150,6 @@ const IntroductionSection = styled.div`
 const Title = styled(Text)`
   animation: ${moveInTop} 1s ease-in;
   margin-bottom: 1.6rem;
-  text-align: center;
-
-  @media ${media.tablet} {
-  }
 `
 
 const SubTitle = styled.div`

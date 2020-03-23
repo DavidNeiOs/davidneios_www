@@ -40,11 +40,21 @@ export const Link = styled(LinkCmp)`
     text-decoration: none;
     transition: all 0.2s;
     padding: 2px 4px;
+    border-radius: 3px;
   }
 
   &:hover {
     color: var(--inner-background);
     background-color: var(--nav-links);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 1.5rem var(--shadow-light);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem var(--shadow-light);
   }
 `
 
