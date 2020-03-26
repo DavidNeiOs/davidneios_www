@@ -30,14 +30,11 @@ const IndexPage = (props: any) => {
               opportunities working with a team that is commited to make a
               difference.
             </Text>
-            <Link
-              to="/about"
-              style={{ alignSelf: "flex-end", marginTop: "1rem" }}
-            >
-              <Text variant="bodyMediumPrimary">Learn more &rarr;</Text>
-            </Link>
           </IntroductionSection>
         </ProfileSection>
+        <Link to="/about" style={{ alignSelf: "flex-end", marginTop: "1rem" }}>
+          <Text variant="bodyMediumPrimary">Learn more &rarr;</Text>
+        </Link>
         <SubTitle>
           <Text
             variant="heading3"
@@ -57,7 +54,7 @@ const IndexPage = (props: any) => {
           for mobile development. Some of the technologies I use include Gatsby,
           GraphQL and Firebase. I have projects that vary in focus from only
           styling to full-stack applications. I love to learn best practices and
-          write clean code that is understandable and scalabe at the moment I'm
+          write clean code that is understandable and scalabe. At the moment I'm
           going through{" "}
           <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
           Kent C. Dodds.
@@ -121,7 +118,7 @@ const ImgContainer = styled.div`
   border-radius: 50%;
   overflow: hidden;
 
-  @media ${media.phablet} {
+  @media ${media.desktop} {
     width: 20rem;
   }
 
