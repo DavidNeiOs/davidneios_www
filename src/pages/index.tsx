@@ -6,7 +6,7 @@ import Typist from "react-typist"
 
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
-import { Link } from "../components/link"
+import { Link, ButtonLink } from "../components/link"
 import SEO from "../components/seo"
 import { media } from "../theme"
 
@@ -59,9 +59,45 @@ const IndexPage = (props: any) => {
           <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
           Kent C. Dodds.
         </Text>
-        <Link to="/about" style={{ alignSelf: "flex-end", marginTop: "1rem" }}>
-          <Text variant="bodyMediumPrimary">See more &rarr;</Text>
-        </Link>
+        <Container>
+          <Text variant="heading4" withComponent="h3">
+            Latest projects:
+          </Text>
+          <ProjectsContainer>
+            <Project>
+              <Caption>
+                <ProjectTitle variant="heading4Bold" withComponent="h4">
+                  Covid19 - SAT
+                </ProjectTitle>
+                <Text
+                  variant="bodyLargePrimary"
+                  style={{ fontStyle: "italic" }}
+                >
+                  Self assessment tool for people in the caribbean islands
+                </Text>
+              </Caption>
+              <Img fluid={props.data.covid.childImageSharp.fluid} />
+            </Project>
+            <Project>
+              <Caption>
+                <ProjectTitle variant="heading4Bold" withComponent="h4">
+                  Uplet
+                </ProjectTitle>
+                <Text variant="bodyLargePrimary">
+                  Space anywhere, anytime for independant professionals
+                </Text>
+              </Caption>
+              <Img fluid={props.data.uplet.childImageSharp.fluid} />
+            </Project>
+          </ProjectsContainer>
+          <ButtonLink
+            to="/about"
+            style={{ alignSelf: "center", marginTop: "1rem" }}
+            content="See more &rarr;"
+          >
+            See more &rarr;
+          </ButtonLink>
+        </Container>
       </PageContainer>
     </Layout>
   )
@@ -70,6 +106,20 @@ const IndexPage = (props: any) => {
 export const INDEX_QUERY = graphql`
   query {
     profile_img: file(relativePath: { eq: "images/profile_square.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    uplet: file(relativePath: { eq: "images/upletspace.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    covid: file(relativePath: { eq: "images/covid19-sat.png" }) {
       childImageSharp {
         fluid(maxWidth: 700) {
           ...GatsbyImageSharpFluid
@@ -168,6 +218,83 @@ const SubTitle = styled.div`
       background-color: var(--text);
     }
   }
+`
+
+const Container = styled.div`
+  margin-top: 2rem;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+`
+
+const ProjectsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media ${media.tablet} {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  @media ${media.desktop} {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+`
+
+const Caption = styled.div`
+  span {
+    font-style: italic;
+  }
+
+  @media ${media.desktop} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s;
+    background: rgba(0, 0, 0, 0.8);
+
+    span {
+      text-align: center;
+      color: #fff;
+    }
+  }
+`
+
+const Project = styled.div`
+  margin: 1.5rem 0;
+  border-radius: 5px;
+  overflow: hidden;
+
+  @media ${media.tablet} {
+    margin: 1.5rem 1.5rem;
+  }
+
+  @media ${media.desktop} {
+    margin: 2rem 0;
+    height: 270px;
+    width: 450px;
+    position: relative;
+    box-shadow: 0 5px 1.5rem var(--shadow-light);
+
+    :hover ${Caption} {
+      opacity: 1;
+    }
+  }
+`
+
+const ProjectTitle = styled(Text)`
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--terciary);
 `
 
 export default IndexPage
