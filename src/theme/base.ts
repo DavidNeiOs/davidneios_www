@@ -24,7 +24,8 @@ export const Base = createGlobalStyle`
       --primary: #210124;
       --inner-background: #0D0D0D;
       --nav-links: #36827F;
-      --text: #FAFAFA ;
+      --text: #FAFAFA;
+      --text-inverted: #FAFAFA;
       --nav-background: #262626;
       --button: #DBF9F0;
       --link: #750D37;
@@ -39,10 +40,11 @@ export const Base = createGlobalStyle`
       --inner-background: #FAFAFA;
       --nav-links: #DEC364;
       --text: #121212;
+      --text-inverted: #FAFAFA;
       --nav-background: #F9F9ED;
       --button: #DBF9F0;
       --link: #750D37;
-      --terciary: #B3DEC1;
+      --terciary: #8791AB;
 
       --shadow-light: rgba(0, 0, 0, 0.3);
       --shadow-medium: rgba(0, 0, 0, 0.5);

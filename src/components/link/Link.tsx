@@ -1,6 +1,6 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 interface LinkProps {
   children: React.ReactNode
@@ -9,7 +9,7 @@ interface LinkProps {
   className?: string
 }
 
-const LinkCmp = ({ children, to, style, className }: LinkProps) => {
+export const LinkCmp = ({ children, to, style, className }: LinkProps) => {
   if (!to.startsWith("/")) {
     return (
       <a
@@ -33,6 +33,22 @@ const LinkCmp = ({ children, to, style, className }: LinkProps) => {
   )
 }
 
+const moveUpAndDown = keyframes`
+  0% {
+    left: -110%;
+    top: 90%;
+  }
+
+  50% {
+    left: 15%;
+    top: -30%;
+  }
+
+  100% {
+    left: -10%;
+    top: -10%;
+  }
+`
 export const Link = styled(LinkCmp)`
   &:link,
   &:visited {
@@ -123,5 +139,45 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
 
   &:hover::after {
     transform: translate(0, 0);
+  }
+`
+
+export const SocialLink = styled(LinkCmp)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--button);
+  margin: 0.5rem;
+  border-radius: 1.3rem;
+  color: var(--nav-links);
+  box-shadow: 0 5px 1.5rem var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+
+  .icon {
+    font-size: 1.7rem;
+    transition: all 0.2s;
+  }
+
+  &:hover .icon {
+    transform: scale(1.3);
+    color: var(--button);
+  }
+
+  &::before {
+    content: "";
+    width: 120%;
+    height: 120%;
+    background-color: var(--nav-links);
+    position: absolute;
+    left: -110%;
+    top: 90%;
+    transform: rotate(45deg);
+  }
+
+  &:hover::before {
+    animation: ${moveUpAndDown} 0.7s 1 forwards;
   }
 `

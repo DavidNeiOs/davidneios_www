@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { theme } from "../theme"
 import Header from "./header"
+import { Footer } from "./footer"
 import { Container } from "./container"
 import { Base } from "../theme"
 
@@ -36,6 +37,7 @@ export const Layout = ({ children }: Props) => {
         <main>
           <Container>{children}</Container>
         </main>
+        <Footer />
       </LayoutEl>
     </ThemeProvider>
   )

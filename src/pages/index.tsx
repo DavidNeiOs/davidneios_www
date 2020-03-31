@@ -91,7 +91,7 @@ const IndexPage = (props: any) => {
             </Project>
           </ProjectsContainer>
           <ButtonLink
-            to="/about"
+            to="/portfolio"
             style={{ alignSelf: "center", marginTop: "1rem" }}
             content="See more &rarr;"
           >
