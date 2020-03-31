@@ -48,23 +48,19 @@ export const textPresets = {
     fontWeight: FontWeights.bold,
   },
   bodyLargePrimary: {
-    fontFamily: "Raleway",
     fontSize: "2rem",
     fontWeight: FontWeights.light,
   },
   bodyLargeBoldPrimary: {
-    fontFamily: "Raleway",
     fontSize: "2rem",
     fontWeight: FontWeights.bold,
   },
   bodyMediumPrimary: {
-    fontFamily: "Raleway",
     fontSize: "1.6rem",
     lineHeight: "",
     fontWeight: FontWeights.light,
   },
   bodySmallPrimary: {
-    fontFamily: "Raleway",
     fontSize: "1.4rem",
     fontWeight: FontWeights.light,
   },

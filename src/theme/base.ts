@@ -12,7 +12,7 @@ export const Base = createGlobalStyle`
   }
 
   body {
-    font-family: "Inter", "Arial", sans-serif;
+    font-family: "Montserrat", "Arial", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -47,6 +47,14 @@ export const Base = createGlobalStyle`
       --shadow-light: rgba(0, 0, 0, 0.3);
       --shadow-medium: rgba(0, 0, 0, 0.5);
       --shadow-strong: rgba(0, 0, 0, 0.7);
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Sen", "Arial", sans-serif;
     }
     input,
     textarea,
