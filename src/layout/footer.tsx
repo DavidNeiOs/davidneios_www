@@ -2,12 +2,17 @@ import React from "react"
 import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa"
 
 import { Container as PageContainer } from "./container"
+import { Nav } from "./nav"
 import { Text } from "../components/Text"
-import { SocialLink, Link } from "../components/link"
+import { SocialLink } from "../components/link"
 import styled from "styled-components"
 import { media } from "../theme"
 
-export const Footer = () => {
+interface Props {
+  path: string
+}
+
+export const Footer = ({ path }: Props) => {
   return (
     <FooterContainer>
       <PageContainer>
@@ -29,23 +34,7 @@ export const Footer = () => {
               </SocialLink>
             </LinksContainer>
           </SocialContainer>
-          <NavContainer>
-            <NavItem>
-              <Link to="/">
-                <Text variant="bodyMediumPrimary">Home</Text>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/about">
-                <Text variant="bodyMediumPrimary">About</Text>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/portfolio">
-                <Text variant="bodyMediumPrimary">Portfolio</Text>
-              </Link>
-            </NavItem>
-          </NavContainer>
+          <Nav path={path} />
         </InnerContainer>
         <Text
           variant="bodyMediumPrimary"
@@ -92,16 +81,4 @@ const SocialContainer = styled.div`
 const LinksContainer = styled.div`
   display: flex;
   text-align: center;
-`
-
-const NavContainer = styled.ul`
-  list-style: none;
-  display: flex;
-  align-self: center;
-`
-
-const NavItem = styled.li`
-  &:not(:last-of-type) {
-    margin-right: 1rem;
-  }
 `

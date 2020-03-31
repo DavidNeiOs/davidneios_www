@@ -74,7 +74,7 @@ export const Link = styled(LinkCmp)`
   }
 `
 
-export const NavLink = styled(LinkCmp)`
+export const SimpleLink = styled(LinkCmp)`
   &:link,
   &:visited {
     color: var(--nav-links);
@@ -89,7 +89,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     background-color: var(--inner-background);
     color: transparent;
     font-size: 1.6rem;
-    border: 2px solid var(--link);
+    border: 2px solid var(--terciary);
     border-radius: 50px;
     padding: 1rem 2rem;
     position: relative;
@@ -104,7 +104,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     height: 100%;
     width: 100%;
     background-color: var(--nav-links);
-    color: var(--link);
+    color: var(--terciary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +120,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     height: 100%;
     width: 100%;
     background-color: var(--nav-links);
-    color: var(--link);
+    color: var(--terciary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -179,5 +179,63 @@ export const SocialLink = styled(LinkCmp)`
 
   &:hover::before {
     animation: ${moveUpAndDown} 0.7s 1 forwards;
+  }
+`
+
+export const NavLink = styled(LinkCmp)`
+  color: var(--nav-links);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  position: relative;
+  transition: all 0.5s;
+  font-size: 1.6rem;
+  font-weight: 300;
+
+  &:hover {
+    background-color: var(--nav-links);
+    color: var(--terciary);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid var(--nav-links);
+    border-width: 0 0 3px 3px;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    bottom: -7px;
+    left: -7px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid var(--nav-links);
+    border-width: 3px 3px 0 0;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    top: -7px;
+    right: -7px;
+  }
+
+  &.selected {
+    border-bottom: 1px solid var(--nav-links);
   }
 `

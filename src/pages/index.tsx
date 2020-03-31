@@ -12,7 +12,7 @@ import { media } from "../theme"
 
 const IndexPage = (props: any) => {
   return (
-    <Layout>
+    <Layout path={props.path}>
       <SEO title="Home" />
       <PageContainer>
         <ProfileSection>

@@ -24,12 +24,9 @@ export const MobileNav = ({ children }: Props) => {
 
   return (
     <NavWrapper>
-      <div
-        onClick={showBackdrop}
-        style={{ height: "25px", width: "25px", position: "relative" }}
-      >
+      <BurgerWrap onClick={showBackdrop}>
         <Burger />
-      </div>
+      </BurgerWrap>
       <CheckBox type="checkbox" checked={showOptions} readOnly />
       <Backdrop onClick={hideBackdrop}>
         <NavBar onClick={navBarHandler}>{children}</NavBar>
@@ -74,15 +71,20 @@ const Backdrop = styled.div`
 `
 
 const NavBar = styled.nav`
+  width: 60%;
+  height: 100vh;
   position: fixed;
   z-index: 11;
   top: 0;
   right: 0;
+  padding: 2rem 1rem;
   background: var(--nav-background);
-  width: 60%;
-  height: 100vh;
   transform: translateX(100%);
   transition: transform 0.2s 0.2s;
+
+  @media ${media.phablet} {
+    width: 45%;
+  }
 `
 
 const Burger = styled.div`
@@ -112,6 +114,13 @@ const Burger = styled.div`
     height: 2px;
     background-color: var(--button);
   }
+`
+
+const BurgerWrap = styled.div`
+  height: 25px;
+  width: 25px;
+  position: relative;
+  cursor: pointer;
 `
 
 export default MobileNav

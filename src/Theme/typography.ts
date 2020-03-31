@@ -57,7 +57,7 @@ export const textPresets = {
   },
   bodyMediumPrimary: {
     fontSize: "1.6rem",
-    lineHeight: "",
+    lineHeight: 1.6,
     fontWeight: FontWeights.light,
   },
   bodySmallPrimary: {

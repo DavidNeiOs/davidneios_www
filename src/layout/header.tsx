@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { media } from "../theme"
-import { NavLink } from "../components/link"
+import { Nav } from "./nav"
+import { SimpleLink } from "../components/link"
 import { Text } from "../components/Text"
 import { ToggleTheme } from "../components/toggle-theme"
 import MobileNav from "../components/mobile-nav"
@@ -9,9 +10,10 @@ import { Container } from "./container"
 
 interface Props {
   siteTitle: string
+  path: string
 }
 
-const Header = ({ siteTitle }: Props) => {
+const Header = ({ siteTitle, path }: Props) => {
   let websiteTheme: any
   if (typeof window !== "undefined") {
     websiteTheme = (window as any).__theme
@@ -43,22 +45,34 @@ const Header = ({ siteTitle }: Props) => {
           }}
         >
           <Text variant="heading3" withComponent="h3" style={{ margin: 0 }}>
-            <NavLink
+            <SimpleLink
               to="/"
               style={{
                 textDecoration: `none`,
               }}
             >
               {siteTitle}
-            </NavLink>
+            </SimpleLink>
           </Text>
+
+          <Navigation path={path} />
           <MobileNav>
-            <ToggleTheme changeTheme={themeToggle} theme={theme} />
+            <Nav path={path}></Nav>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
+              }}
+            >
+              <Text variant="bodyMediumPrimary">Theme: </Text>
+              <ToggleTheme changeTheme={themeToggle} theme={theme} />
+            </div>
           </MobileNav>
 
-          <Nav>
+          <TabletNav>
             <ToggleTheme changeTheme={themeToggle} theme={theme} />
-          </Nav>
+          </TabletNav>
         </div>
       </Container>
     </HeaderEl>
@@ -75,7 +89,15 @@ const HeaderEl = styled.header`
   width: 100%;
 `
 
-const Nav = styled.div`
+const Navigation = styled(Nav)`
+  display: none;
+
+  @media ${media.tablet} {
+    display: flex;
+  }
+`
+
+const TabletNav = styled.div`
   display: none;
 
   @media ${media.tablet} {

@@ -14,9 +14,10 @@ const LayoutEl = styled.div`
 `
 interface Props {
   children: ReactNode
+  path: string
 }
 
-export const Layout = ({ children }: Props) => {
+export const Layout = ({ children, path }: Props) => {
   return (
     <ThemeProvider theme={theme}>
       <Base />
@@ -32,12 +33,14 @@ export const Layout = ({ children }: Props) => {
             }
           `}
         >
-          {data => <Header siteTitle={data.site.siteMetadata.title} />}
+          {data => (
+            <Header siteTitle={data.site.siteMetadata.title} path={path} />
+          )}
         </StaticQuery>
         <main>
           <Container>{children}</Container>
         </main>
-        <Footer />
+        <Footer path={path} />
       </LayoutEl>
     </ThemeProvider>
   )
