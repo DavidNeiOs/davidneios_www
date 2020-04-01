@@ -6,7 +6,7 @@ import Typist from "react-typist"
 
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
-import { Link, ButtonLink } from "../components/link"
+import { Link, NeonLink } from "../components/link"
 import SEO from "../components/seo"
 import { media } from "../theme"
 
@@ -90,13 +90,9 @@ const IndexPage = (props: any) => {
               <Img fluid={props.data.uplet.childImageSharp.fluid} />
             </Project>
           </ProjectsContainer>
-          <ButtonLink
-            to="/portfolio"
-            style={{ alignSelf: "center", marginTop: "1rem" }}
-            content="See more &rarr;"
-          >
+          <NeonLink to="/portfolio" style={{ alignSelf: "center" }}>
             See more &rarr;
-          </ButtonLink>
+          </NeonLink>
         </Container>
       </PageContainer>
     </Layout>
