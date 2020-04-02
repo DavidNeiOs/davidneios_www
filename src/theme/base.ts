@@ -34,6 +34,7 @@ export const Base = createGlobalStyle`
       --shadow-light: rgba(250, 250, 250, 0.2);
       --shadow-medium: rgba(250, 250, 250, 0.5);
       --shadow-strong: rgba(250, 250, 250, 0.7);
+      --shadow-background: rgba(13, 13, 13, .5);
     }
     &.light {
       --primary: #464D77;
@@ -49,6 +50,7 @@ export const Base = createGlobalStyle`
       --shadow-light: rgba(0, 0, 0, 0.3);
       --shadow-medium: rgba(0, 0, 0, 0.5);
       --shadow-strong: rgba(0, 0, 0, 0.7);
+      --shadow-background: rgba(250, 250, 250, .5);
     }
     h1,
     h2,
