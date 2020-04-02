@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
+import { FaMapPin } from "react-icons/fa"
 
 import { Layout } from "../layout"
 import SEO from "../components/seo"
@@ -28,6 +29,79 @@ const AboutPage = (props: any) => {
         </Text>
       </Section>
       <hr />
+
+      <Section>
+        <SectionTitle variant="heading2" withComponent="h2">
+          Experience:
+        </SectionTitle>
+        <ExperienceContainer>
+          <Selector current />
+          <Experience>
+            <ExperienceLocation>
+              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
+                March 2020 - Current
+              </Text>
+              <Text variant="bodySmallPrimary">
+                <FaMapPin /> Montreal 🇨🇦
+              </Text>
+            </ExperienceLocation>
+            <Text variant="bodyLargeBoldPrimary">Full-Stack Developer</Text>
+            <Text variant="bodyMediumPrimary">Freelance</Text>
+          </Experience>
+        </ExperienceContainer>
+
+        <ExperienceContainer>
+          <Selector />
+          <Experience>
+            <ExperienceLocation>
+              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
+                September 2019 - March 2020
+              </Text>
+              <Text variant="bodySmallPrimary">
+                <FaMapPin /> Montreal 🇨🇦
+              </Text>
+            </ExperienceLocation>
+            <Text variant="bodyLargeBoldPrimary">Software Developer</Text>
+            <Text variant="bodyMediumPrimary">Uplet</Text>
+          </Experience>
+        </ExperienceContainer>
+
+        <ExperienceContainer>
+          <Selector />
+          <Experience>
+            <ExperienceLocation>
+              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
+                Juin 2019 - September 2019
+              </Text>
+              <Text variant="bodySmallPrimary">
+                <FaMapPin /> Montreal 🇨🇦
+              </Text>
+            </ExperienceLocation>
+            <Text variant="bodyLargeBoldPrimary">Teaching Coach</Text>
+            <Text variant="bodyMediumPrimary">
+              Journey Education - Concordia Bootcamps
+            </Text>
+          </Experience>
+        </ExperienceContainer>
+
+        <ExperienceContainer>
+          <Selector />
+          <Experience>
+            <ExperienceLocation>
+              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
+                January 2019 - August 2019
+              </Text>
+              <Text variant="bodySmallPrimary">
+                <FaMapPin /> Montreal 🇨🇦
+              </Text>
+            </ExperienceLocation>
+            <Text variant="bodyLargeBoldPrimary">Full-Stack Developer</Text>
+            <Text variant="bodyMediumPrimary">Bureau Billy</Text>
+          </Experience>
+        </ExperienceContainer>
+      </Section>
+      <hr />
+
       <Section>
         <SectionTitle variant="heading2" withComponent="h2">
           Skills:
@@ -229,6 +303,51 @@ const SectionTitle = styled(Text)`
   margin-bottom: 1.5rem;
 `
 
+const bouncing = keyframes`
+  0% {
+		transform: translate3d(0, 10px, 0) scale(1.2, 0.85);
+	}
+
+	100% {
+		transform: translate3d(0, -10px, 0) scale(0.9, 1.1);
+	}
+`
+
+const animationMixin = css`
+  animation: ${bouncing} 0.4s alternate infinite
+    cubic-bezier(0.6, 0.05, 0.15, 0.95);
+`
+
+const Selector = styled.div<{ current?: boolean }>`
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1.5rem;
+  border-radius: 50%;
+  background: var(--terciary);
+  ${props =>
+    props.current
+      ? animationMixin
+      : "animation: none 0 ease 0 1 normal none running"};
+`
+
+const ExperienceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  &:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+`
+
+const Experience = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ExperienceLocation = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const Skill = styled.div`
   display: flex;
   flex-direction: column;
@@ -257,11 +376,6 @@ const ImageWrapper = styled.div<{ background?: string }>`
   height: 8rem;
   width: 8rem;
   background: ${props => (props.background ? props.background : "transparent")};
-
-  .full-size {
-    height: 100%;
-    width: 100%;
-  }
 `
 
 export default AboutPage
