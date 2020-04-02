@@ -1,7 +1,7 @@
 import React from "react"
 import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa"
 
-import { Container as PageContainer } from "./container"
+import { Container } from "./container"
 import { Nav } from "./nav"
 import { Text } from "../components/Text"
 import { SocialLink } from "../components/link"
@@ -15,7 +15,7 @@ interface Props {
 export const Footer = ({ path }: Props) => {
   return (
     <FooterContainer>
-      <PageContainer>
+      <Container>
         <InnerContainer>
           <SocialContainer>
             <Text variant="bodyMediumPrimary">Contact me:</Text>
@@ -43,7 +43,7 @@ export const Footer = ({ path }: Props) => {
         >
           &copy;{new Date().getFullYear()} David Neira
         </Text>
-      </PageContainer>
+      </Container>
     </FooterContainer>
   )
 }
