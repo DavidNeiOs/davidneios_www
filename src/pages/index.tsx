@@ -59,11 +59,11 @@ const IndexPage = (props: any) => {
           <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
           Kent C. Dodds.
         </Text>
-        <Container>
+        <ProjectsContainer>
           <Text variant="heading4" withComponent="h3">
             Latest projects:
           </Text>
-          <ProjectsContainer>
+          <ProjectsParent>
             <Project>
               <Caption>
                 <ProjectTitle variant="heading4Bold" withComponent="h4">
@@ -89,11 +89,13 @@ const IndexPage = (props: any) => {
               </Caption>
               <Img fluid={props.data.uplet.childImageSharp.fluid} />
             </Project>
-          </ProjectsContainer>
+          </ProjectsParent>
           <NeonLink to="/portfolio" style={{ alignSelf: "center" }}>
-            See more &rarr;
+            <Text variant="bodySmallPrimary" withComponent="p">
+              See more &rarr;
+            </Text>
           </NeonLink>
-        </Container>
+        </ProjectsContainer>
       </PageContainer>
     </Layout>
   )
@@ -216,14 +218,14 @@ const SubTitle = styled.div`
   }
 `
 
-const Container = styled.div`
+const ProjectsContainer = styled.div`
   margin-top: 2rem;
   align-self: stretch;
   display: flex;
   flex-direction: column;
 `
 
-const ProjectsContainer = styled.div`
+const ProjectsParent = styled.div`
   display: flex;
   flex-direction: column;
 
