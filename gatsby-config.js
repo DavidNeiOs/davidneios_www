@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `DavidNeiOs`,
-    description: `Personal site of David A. Neira Ospina`,
+    description: `Web and Mobile Developer. Let's make something great.`,
     author: `@davidneios, @gatsbyjs`,
   },
   plugins: [
