@@ -28,8 +28,8 @@ const Portfolio = (props: any) => {
           <Description>
             <Text variant="bodyMediumPrimary" withComponent="p">
               This tool was created for people to know wheter they need to be
-              tested for COVID-19 or not. This hill help avoid overloadin on
-              their country help systems
+              tested for COVID-19 or not. This will help avoid overloading on
+              their country health systems.
             </Text>
             <LiquidLink to="https://covid.caribbeanhealth.info/">
               <Text variant="bodySmallPrimary">live</Text>
@@ -60,7 +60,7 @@ const Portfolio = (props: any) => {
           </ImageContainer>
           <Description>
             <Text variant="bodyMediumPrimary" withComponent="p">
-              I was part of team of developers that were creating a mobile
+              I was part of the team of developers that were creating a mobile
               solution for independant professionals who need to find space for
               their practice.
             </Text>
