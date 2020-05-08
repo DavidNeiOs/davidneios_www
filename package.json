@@ -1,10 +1,11 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "davidneios-portafolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "David A. Neira Ospina personal portafolio website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "David Neira <hello@davidneios.dev>",
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.8.5",
@@ -22,6 +23,7 @@
     "gatsby-plugin-styled-components": "^3.1.2",
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.9",
+    "gatsby-source-sanity": "^5.0.6",
     "gatsby-transformer-sharp": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",

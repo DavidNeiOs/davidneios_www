@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { theme } from "../theme"
@@ -13,11 +13,10 @@ const LayoutEl = styled.div`
   min-height: 100vh;
 `
 interface Props {
-  children: ReactNode
   path: string
 }
 
-export const Layout = ({ children, path }: Props) => {
+export const Layout: React.FC<Props> = ({ children, path }) => {
   return (
     <ThemeProvider theme={theme}>
       <Base />
