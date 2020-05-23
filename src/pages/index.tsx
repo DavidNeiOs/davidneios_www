@@ -7,33 +7,42 @@ import Typist from "react-typist"
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
 import { Link, NeonLink } from "../components/link"
+import { PortableText } from "../components/portable-text"
 import SEO from "../components/seo"
 import { media } from "../theme"
+import { getLocalText } from "../utils/get-local-text"
 
 const IndexPage = (props: any) => {
+  const localize = getLocalText("en")
+  const data = localize(props.data.sanity)
+
   return (
     <Layout path={props.path}>
       <SEO title="Home" />
       <PageContainer>
         <ProfileSection>
           <ImgContainer>
-            <Img fluid={props.data.profile_img.childImageSharp.fluid} />
+            <Img
+              fluid={data.introduction.picture.asset.fluid}
+              style={{ height: "100%", width: "100%" }}
+            />
           </ImgContainer>
           <IntroductionSection>
             <Title withComponent="h1" variant="heading1Bold">
-              Hello, I'm David!
+              {data.introduction.title}
             </Title>
-            <Text variant="bodyLargePrimary" withComponent="p">
-              I'm a <strong>Software developer</strong>. Born and raised in
-              Colombia. I live now in Montreal 🇨🇦. I have over a year experience
-              as a Full-Stack Developer and I'm now looking for new
-              opportunities working with a team that is commited to make a
-              difference.
+            <Text variant="bodyLargePrimary">
+              <PortableText blocks={data._rawIntroduction.introText} />
             </Text>
           </IntroductionSection>
         </ProfileSection>
-        <Link to="/about" style={{ alignSelf: "flex-end", marginTop: "1rem" }}>
-          <Text variant="bodyMediumPrimary">Learn more &rarr;</Text>
+        <Link
+          to={data.introduction.link.link}
+          style={{ alignSelf: "flex-end", marginTop: "1rem" }}
+        >
+          <Text variant="bodyMediumPrimary">
+            {data.introduction.link.text} &rarr;
+          </Text>
         </Link>
         <SubTitle>
           <Text
@@ -123,6 +132,40 @@ export const INDEX_QUERY = graphql`
           ...GatsbyImageSharpFluid
         }
       }
+    }
+    sanity: sanityHomePage {
+      introduction {
+        picture {
+          caption {
+            en
+            es
+            fr
+            _type
+          }
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        title {
+          _type
+          en
+          es
+          fr
+        }
+        link {
+          _type
+          link
+          text {
+            _type
+            en
+            es
+            fr
+          }
+        }
+      }
+      _rawIntroduction(resolveReferences: { maxDepth: 5 })
     }
   }
 `
