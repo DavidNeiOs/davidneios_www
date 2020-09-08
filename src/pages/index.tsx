@@ -14,7 +14,12 @@ import { getLocalText } from "../utils/get-local-text"
 
 const IndexPage = (props: any) => {
   const localize = getLocalText("en")
-  const data = localize(props.data.sanity)
+  const {
+    introduction,
+    typist,
+    _rawIntroduction,
+    _rawExperienceIntro,
+  } = localize(props.data.sanity)
 
   return (
     <Layout path={props.path}>
@@ -23,25 +28,25 @@ const IndexPage = (props: any) => {
         <ProfileSection>
           <ImgContainer>
             <Img
-              fluid={data.introduction.picture.asset.fluid}
+              fluid={introduction.picture.asset.fluid}
               style={{ height: "100%", width: "100%" }}
             />
           </ImgContainer>
           <IntroductionSection>
             <Title withComponent="h1" variant="heading1Bold">
-              {data.introduction.title}
+              {introduction.title}
             </Title>
             <Text variant="bodyLargePrimary">
-              <PortableText blocks={data._rawIntroduction.introText} />
+              <PortableText blocks={_rawIntroduction.introText} />
             </Text>
           </IntroductionSection>
         </ProfileSection>
         <Link
-          to={data.introduction.link.link}
+          to={introduction.link.link}
           style={{ alignSelf: "flex-end", marginTop: "1rem" }}
         >
           <Text variant="bodyMediumPrimary">
-            {data.introduction.link.text} &rarr;
+            {introduction.link.text} &rarr;
           </Text>
         </Link>
         <SubTitle>
@@ -50,23 +55,19 @@ const IndexPage = (props: any) => {
             withComponent="h3"
             style={{ textAlign: "center" }}
           >
-            <Text>I develop applications in </Text>
-            <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
-              <Text>JavaScript</Text>
-              <Typist.Backspace count={10} delay={2000} />
-              <Text>TypeScript</Text>
+            <Text>{typist.enterText}</Text>
+            <Typist cursor={{ hideWhenDone: true }} startDelay={typist.delay}>
+              <Text>{typist.startText}</Text>
+              <Typist.Backspace
+                count={typist.numOfCharsToDelete}
+                delay={typist.backspaceDelay}
+              />
+              <Text>{typist.finalText}</Text>
             </Typist>
           </Text>
         </SubTitle>
         <Text variant="bodyLargePrimary" withComponent="p">
-          I have experience working with React, Node(Express) and React Native
-          for mobile development. Some of the technologies I use include Gatsby,
-          GraphQL and Firebase. I have projects that vary in focus from only
-          styling to full-stack applications. I love to learn best practices and
-          write clean code that is understandable and scalabe. At the moment I'm
-          going through{" "}
-          <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
-          Kent C. Dodds.
+          <PortableText blocks={_rawExperienceIntro} />
         </Text>
         <ProjectsContainer>
           <Text variant="heading4" withComponent="h3">
@@ -166,6 +167,21 @@ export const INDEX_QUERY = graphql`
         }
       }
       _rawIntroduction(resolveReferences: { maxDepth: 5 })
+      typist {
+        _type
+        enterText {
+          _type
+          en
+          es
+          fr
+        }
+        delay
+        startText
+        numOfCharsToDelete
+        backspaceDelay
+        finalText
+      }
+      _rawExperienceIntro(resolveReferences: { maxDepth: 5 })
     }
   }
 `

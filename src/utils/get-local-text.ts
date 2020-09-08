@@ -6,7 +6,7 @@ export const getLocalText = (languageCode: string): any => {
     if (!value) return
     if (Array.isArray(value)) {
       //@ts-ignore
-      value = value.map(v => localize(v, languages))
+      value = value.map(v => localize(v))
     } else if (typeof value == "object") {
       if (/^locale[A-Z]/.test(value._type)) {
         const language = languages.find(lang => value[lang]) || "en"
@@ -14,7 +14,7 @@ export const getLocalText = (languageCode: string): any => {
       }
       return Object.keys(value).reduce((result, key) => {
         //@ts-ignore
-        result[key] = localize(value[key], languages)
+        result[key] = localize(value[key])
         return result
       }, {})
     }

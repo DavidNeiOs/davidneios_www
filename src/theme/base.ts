@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components"
 import { media } from "./breakpoints"
 
 export const Base = createGlobalStyle`
@@ -22,7 +22,7 @@ export const Base = createGlobalStyle`
 
     &.dark {
       --primary: #210124;
-      --inner-background: #0D0D0D;
+      --inner-background: #1B1C1E;
       --nav-links: #36827F;
       --text: #FAFAFA;
       --text-inverted: #FAFAFA;
@@ -40,7 +40,7 @@ export const Base = createGlobalStyle`
       --primary: #464D77;
       --inner-background: #FAFAFA;
       --nav-links: #DEC364;
-      --text: #121212;
+      --text: #1B1C1E;
       --text-inverted: #FAFAFA;
       --nav-background: #F9F9ED;
       --button: #DBF9F0;
