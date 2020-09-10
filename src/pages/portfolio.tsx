@@ -351,7 +351,7 @@ const Tag = styled.li`
   background-color: var(--terciary);
   padding: 4px 8px;
   border-radius: 100px;
-  color: #3c3c3c;
+  color: var(--text-inverted);
   text-decoration: none;
 
   &:not(:last-of-type) {

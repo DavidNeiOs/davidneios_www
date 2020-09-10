@@ -351,7 +351,7 @@ const Project = styled.div`
 const ProjectTitle = styled(Text)`
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--terciary);
+  color: var(--title);
 `
 
 export default IndexPage

@@ -20,32 +20,55 @@ export const Base = createGlobalStyle`
     color: var(--textNormal);
     line-height: 1.6;
 
+    --primary-100: #694878;
+    --primary-200: #4A2B57;
+    --primary-300: #36213E;
+    --primary-400: #2C0D38;
+    --primary-500: #271030;
+    --neutral-100: #FAFAFA;
+    --neutral-200: #F4F5F7;
+    --neutral-300: #E4E8F0;
+    --neutral-400: #737581;
+    --neutral-500: #4A4B53;
+    --neutral-600: #1B1C1E;
+    --green-100: #DBF9F0;
+    --green-200: #B3DEC1;
+    --green-300: #36827F;
+    --warning-100: #E8DB64;    
+    --warning-200: #EDD926;    
+    --warning-300: #C2B013;    
+    --error-100: #D0454C;
+    --error-200: #B54248;
+    --error-300: #95353A;
+
     &.dark {
-      --primary: #210124;
-      --inner-background: #1B1C1E;
-      --nav-links: #36827F;
-      --text: #FAFAFA;
-      --text-inverted: #FAFAFA;
-      --nav-background: #262626;
-      --button: #DBF9F0;
-      --link: #750D37;
-      --terciary: #B3DEC1;
+      --primary: var(--primary-500);
+      --inner-background: var(--neutral-600);
+      --title: var(--error-100);
+      --text: var(--neutral-100);
+      --text-inverted: var(--neutral-600);
+      --nav-background: var(--neutral-500);
+      --nav-links: var(--green-300);
+      --links: var(--green-200);
+      --button: var(--green-300);
+      --terciary: var(--green-100);
 
       --shadow-light: rgba(250, 250, 250, 0.2);
       --shadow-medium: rgba(250, 250, 250, 0.5);
       --shadow-strong: rgba(250, 250, 250, 0.7);
-      --shadow-background: rgba(13, 13, 13, .5);
+      --shadow-background: rgba(27, 28, 30, .5);
     }
     &.light {
-      --primary: #464D77;
-      --inner-background: #FAFAFA;
-      --nav-links: #DEC364;
-      --text: #1B1C1E;
-      --text-inverted: #FAFAFA;
-      --nav-background: #F9F9ED;
-      --button: #DBF9F0;
-      --link: #750D37;
-      --terciary: #8791AB;
+      --primary: var(--primary-200);
+      --inner-background: var(--neutral-100);
+      --title: var(--error-300);
+      --text: var(--neutral-600);
+      --text-inverted: var(--neutral-100);
+      --nav-background: var(--neutral-500);
+      --nav-links: var(--green-100);
+      --links: var(--green-300);
+      --button: var(--green-100);
+      --terciary: var(--green-300);
 
       --shadow-light: rgba(0, 0, 0, 0.3);
       --shadow-medium: rgba(0, 0, 0, 0.5);
