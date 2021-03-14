@@ -6,204 +6,88 @@ import { FaMapPin } from "react-icons/fa"
 
 import { Layout } from "../layout"
 import SEO from "../components/seo"
+import { PortableText } from "../components/portable-text"
 import { Text } from "../components/Text"
 import { media } from "../theme"
+import { getLocalText } from "../utils/get-local-text"
+import { groupArrayToObj } from "../utils/group-array-to-object";
+import { modifyExperienceArray } from "../utils/modify-experience-array"
+
+const skillsOrder = ['frontend', 'mobile', 'backend', 'languages', 'sourceControl']
+const skillNames = ['Front-End', 'Mobile', 'Back-End', 'Languages', 'Source Control']
+
 
 const AboutPage = (props: any) => {
   const { data } = props
 
+  const localize = getLocalText("en")
+  const {
+    allSanitySkills: { group: skills},
+    allSanityExperience: { nodes: experienceArr},
+    sanityAboutPage: page,
+  } = localize(data)
+
+  const skillsObj = groupArrayToObj(skills)
+  const experiences = modifyExperienceArray(experienceArr, 'en');
+  
   return (
     <Layout path={props.path}>
       <SEO title="About" />
       <Section>
         <SectionTitle variant="heading2" withComponent="h2">
-          Intro:
+          {page.introduction.title}
         </SectionTitle>
         <Text variant="bodyLargePrimary" withComponent="p">
-          I am originally from Colombia, where I found a passion for programming
-          in my first year of computer science. As I wanted to broaden my
-          horizons, I moved to Brisbane, Australia where I mastered English. I
-          am now living in Montreal, where I have specialized in Web Development
-          and acquired experience working with Javascript and Typescript. I’m
-          always looking to learn more.
+          <PortableText blocks={page._rawIntroduction.introText} />
         </Text>
       </Section>
       <hr />
 
       <Section>
         <SectionTitle variant="heading2" withComponent="h2">
-          Experience:
+          {page.experienceTitle}
         </SectionTitle>
-        <ExperienceContainer>
-          <Selector current />
-          <Experience>
-            <ExperienceLocation>
-              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
-                March 2020 - Current
-              </Text>
-              <Text variant="bodySmallPrimary">
-                <FaMapPin /> Montreal 🇨🇦
-              </Text>
-            </ExperienceLocation>
-            <Text variant="bodyLargeBoldPrimary">Full-Stack Developer</Text>
-            <Text variant="bodyMediumPrimary">Freelance</Text>
-          </Experience>
-        </ExperienceContainer>
-
-        <ExperienceContainer>
-          <Selector />
-          <Experience>
-            <ExperienceLocation>
-              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
-                September 2019 - March 2020
-              </Text>
-              <Text variant="bodySmallPrimary">
-                <FaMapPin /> Montreal 🇨🇦
-              </Text>
-            </ExperienceLocation>
-            <Text variant="bodyLargeBoldPrimary">Software Developer</Text>
-            <Text variant="bodyMediumPrimary">Uplet</Text>
-          </Experience>
-        </ExperienceContainer>
-
-        <ExperienceContainer>
-          <Selector />
-          <Experience>
-            <ExperienceLocation>
-              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
-                Juin 2019 - September 2019
-              </Text>
-              <Text variant="bodySmallPrimary">
-                <FaMapPin /> Montreal 🇨🇦
-              </Text>
-            </ExperienceLocation>
-            <Text variant="bodyLargeBoldPrimary">Teaching Coach</Text>
-            <Text variant="bodyMediumPrimary">
-              Journey Education - Concordia Bootcamps
-            </Text>
-          </Experience>
-        </ExperienceContainer>
-
-        <ExperienceContainer>
-          <Selector />
-          <Experience>
-            <ExperienceLocation>
-              <Text variant="bodyMediumPrimary" style={{ marginRight: "2rem" }}>
-                January 2019 - August 2019
-              </Text>
-              <Text variant="bodySmallPrimary">
-                <FaMapPin /> Montreal 🇨🇦
-              </Text>
-            </ExperienceLocation>
-            <Text variant="bodyLargeBoldPrimary">Full-Stack Developer</Text>
-            <Text variant="bodyMediumPrimary">Bureau Billy</Text>
-          </Experience>
-        </ExperienceContainer>
+          {experiences.map(({ isCurrent, timeString, place, position, company, id}) => (
+            <ExperienceContainer key={id}>
+              <Selector current={isCurrent} />
+              <Experience>
+                <ExperienceLocation>
+                  <Text variant="bodyMediumPrimary" style={{  marginRight: "2rem" }}>
+                    {timeString}
+                  </Text>
+                  <Text variant="bodySmallPrimary">
+                    <FaMapPin /> {place} 🇨🇦
+                  </Text>
+                </ExperienceLocation>
+                <Text variant="bodyLargeBoldPrimary">{position}</Text>
+                <Text variant="bodyMediumPrimary">{company}</Text>
+              </Experience>
+            </ExperienceContainer>
+          ))}
       </Section>
       <hr />
 
       <Section>
         <SectionTitle variant="heading2" withComponent="h2">
-          Skills:
+          {page.skillsTitle}
         </SectionTitle>
-        <Text variant="heading3" withComponent="h4">
-          Front-End:
-        </Text>
-        <SkillsContainer>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.react.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">React</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.html.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">HTML</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.css.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">CSS</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.sass.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">SASS</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper background="linear-gradient(20deg, rgb(219, 112, 147), rgb(218, 163, 87))">
-              <Img fluid={data.styledc.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">Styled Components</Text>
-          </Skill>
-        </SkillsContainer>
-
-        <Text variant="heading3" withComponent="h4">
-          Mobile:
-        </Text>
-        <SkillsContainer>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.react.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">React-Native</Text>
-          </Skill>
-        </SkillsContainer>
-
-        <Text variant="heading3" withComponent="h4">
-          Back-End:
-        </Text>
-        <SkillsContainer>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.nodejs.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">NodeJS</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.mongodb.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">MongoDB</Text>
-          </Skill>
-        </SkillsContainer>
-
-        <Text variant="heading3" withComponent="h4">
-          Languages:
-        </Text>
-        <SkillsContainer>
-          <Skill>
-            <ImageWrapper>
-              <Img
-                fluid={data.javascript.childImageSharp.fluid}
-                className="full-size"
-              />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">JavaScript</Text>
-          </Skill>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.typescript.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">TypeScript</Text>
-          </Skill>
-        </SkillsContainer>
-
-        <Text variant="heading3" withComponent="h4">
-          Source control:
-        </Text>
-        <SkillsContainer>
-          <Skill>
-            <ImageWrapper>
-              <Img fluid={data.git.childImageSharp.fluid} />
-            </ImageWrapper>
-            <Text variant="bodyMediumPrimary">Git</Text>
-          </Skill>
-        </SkillsContainer>
+        {skillsOrder.map((skill, index:number) => (
+          <>
+          <Text variant="heading3" withComponent="h4">
+          {skillNames[index]}:
+          </Text>
+          <SkillsContainer>
+            {skillsObj[skill].map((obj: any) => (
+              <Skill>
+                <ImageWrapper>
+                  <Img fluid={obj.image.asset.fluid} />
+                </ImageWrapper>
+                <Text variant="bodyMediumPrimary">{obj.name}</Text>
+              </Skill>
+            ))}
+          </SkillsContainer>
+          </>
+        ))}
       </Section>
     </Layout>
   )
@@ -211,82 +95,55 @@ const AboutPage = (props: any) => {
 
 export const ABOUT_QUERY = graphql`
   query {
-    html: file(relativePath: { eq: "images/html5.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+    allSanitySkills {
+      group(field: skillSet) {
+        nodes {
+          image {
+            asset {
+              fluid(maxWidth: 700) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          name
+          id
         }
+        fieldValue
       }
     }
-    react: file(relativePath: { eq: "images/react.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
+    allSanityExperience(sort: {fields: endDate, order: DESC}) {
+      nodes {
+        company
+        endDate
+        isCurrent
+        place
+        position
+        startDate
+        id
       }
     }
-    css: file(relativePath: { eq: "images/css3.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
+    sanityAboutPage {
+      experienceTitle {
+        _type
+        en
+        es
+        fr
+      }
+      skillsTitle {
+        _type
+        en
+        es
+        fr
+      }
+      introduction {
+      title {
+        _type
+        en
+        es
+        fr
       }
     }
-    javascript: file(relativePath: { eq: "images/javascript.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    mongodb: file(relativePath: { eq: "images/mongodb.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    nodejs: file(relativePath: { eq: "images/nodejs.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    sass: file(relativePath: { eq: "images/sass.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    styledc: file(relativePath: { eq: "images/styled-components.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    typescript: file(relativePath: { eq: "images/typescript.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    css: file(relativePath: { eq: "images/css3.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    git: file(relativePath: { eq: "images/git.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+      _rawIntroduction(resolveReferences: {maxDepth: 5})
     }
   }
 `

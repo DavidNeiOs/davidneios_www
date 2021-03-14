@@ -8,211 +8,49 @@ import SEO from "../components/seo"
 import { Text } from "../components/Text"
 import { LiquidLink } from "../components/link"
 import { media } from "../theme"
+import { getLocalText } from "../utils/get-local-text"
+import { PortableText } from "../components/portable-text"
 
 const Portfolio = (props: any) => {
-  const { data } = props
+  const { data } = props;
+
+  const localize = getLocalText("en");
+  const { allSanityProject: {nodes: projects}} = localize(data);
+  
   return (
     <Layout path={props.path}>
       <SEO title="Portfolio" />
       <ProjectsContainer>
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            COVID-19 Self-Assessment tool for people in the carebbean islands
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.covid.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              This tool was created for people to know wheter they need to be
-              tested for COVID-19 or not. This will help avoid overloading on
-              their country health systems.
-            </Text>
-            <LiquidLink to="https://covid.caribbeanhealth.info/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">Gatsby</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">JavaScript</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">MDX</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
-
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            Uplet
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.uplet.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              I was part of the team of developers that were creating a mobile
-              solution for independant professionals who need to find space for
-              their practice.
-            </Text>
-            <LiquidLink to="https://www.upletspace.com/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">React-Native</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Gatsby</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Firebase</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">TypeScript</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
-
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            Tolobi
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.tolobi.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              Full-Stack solution for a real state company in Ontario. I was
-              part of the team who build it.
-            </Text>
-            <LiquidLink to="https://tolobi.com/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">React</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">GraphQL</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">TypeScript</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
-
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            Nexter
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.nexter.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              Dummy website (only styles).
-            </Text>
-            <LiquidLink to="http://nexter-david.surge.sh/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">React</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Styled-Components</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Personal</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
-
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            Trillo
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.trillo.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              Dummy website (only styles).
-            </Text>
-            <LiquidLink to="http://trillo-david.surge.sh/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">React</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">SASS</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Personal</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
-
-        <Project>
-          <Title variant="heading3Bold" withComponent="h3">
-            Natours
-          </Title>
-          <ImageContainer>
-            <Image
-              fluid={data.natours.childImageSharp.fluid}
-              style={{ height: "100%" }}
-            />
-          </ImageContainer>
-          <Description>
-            <Text variant="bodyMediumPrimary" withComponent="p">
-              Dummy website (only styles).
-            </Text>
-            <LiquidLink to="http://natours-david.surge.sh/">
-              <Text variant="bodySmallPrimary">live</Text>
-            </LiquidLink>
-          </Description>
-
-          <TagsContainer>
-            <Tag>
-              <Text variant="bodySmallPrimary">React</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">SASS</Text>
-            </Tag>
-            <Tag>
-              <Text variant="bodySmallPrimary">Personal</Text>
-            </Tag>
-          </TagsContainer>
-        </Project>
+      {projects.map((project:any) => (
+        <Project key={project.id}>
+        <Title variant="heading3Bold" withComponent="h3">
+          {project.name}
+        </Title>
+        <ImageContainer>
+          <Image
+            fluid={project.image.asset.fluid}
+            style={{ height: "100%" }}
+          />
+        </ImageContainer>
+        <Description>
+          <Text variant="bodyMediumPrimary" withComponent="p">
+            <PortableText blocks={project._rawLongDescription} />
+          </Text>
+          {project.isLive && (
+            <LiquidLink to={project.link.link}>
+            <Text variant="bodySmallPrimary">live</Text>
+          </LiquidLink>
+          )}  
+        </Description>
+        <TagsContainer>
+          {project.tech.map((tag: any, index: number) => (
+            <Tag key={index}>
+              <Text variant="bodySmallPrimary">{tag}</Text>
+          </Tag>
+          ))}
+        </TagsContainer>
+      </Project>
+      ))}
       </ProjectsContainer>
     </Layout>
   )
@@ -220,46 +58,24 @@ const Portfolio = (props: any) => {
 
 export const PORTFOLIO_QUERY = graphql`
   query {
-    covid: file(relativePath: { eq: "images/covid19-sat.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+    allSanityProject(sort: {fields: _updatedAt, order: DESC}) {
+      nodes {
+        image {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
+            }
+          }
         }
-      }
-    }
-    uplet: file(relativePath: { eq: "images/upletspace.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+        id
+        link {
+          _type
+          link
         }
-      }
-    }
-    tolobi: file(relativePath: { eq: "images/tolobi.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    nexter: file(relativePath: { eq: "images/nexter.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    trillo: file(relativePath: { eq: "images/trillo.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    natours: file(relativePath: { eq: "images/natours.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
+        name
+        tech
+        _rawLongDescription(resolveReferences: {maxDepth: 5})
+        isLive
       }
     }
   }

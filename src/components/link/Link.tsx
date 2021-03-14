@@ -195,7 +195,7 @@ export const NavLink = styled(LinkCmp)`
 
   &:hover {
     background-color: var(--nav-links);
-    color: var(--terciary);
+    color: var(--primary);
   }
 
   &::before {

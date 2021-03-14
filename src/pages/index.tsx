@@ -21,7 +21,7 @@ const IndexPage = (props: any) => {
     _rawExperienceIntro,
     projectSection
   } = localize(props.data.sanity)
-  console.log(projectSection);
+
   return (
     <Layout path={props.path}>
       <SEO title="Home" />
@@ -75,8 +75,8 @@ const IndexPage = (props: any) => {
             {projectSection.title}
           </Text>
           <ProjectsParent>
-            {projectSection.projects.map(project => (
-              <Project>
+            {projectSection.projects.map((project: any) => (
+              <Project key={project.id}>
                 <Caption>
                   <ProjectTitle variant="heading4Bold"  withComponent="h4">
                     {project.name}
@@ -173,6 +173,7 @@ export const INDEX_QUERY = graphql`
             }
           }
         }
+        id
         name
         shortDescription {
           _type
@@ -339,7 +340,6 @@ const Project = styled.div`
 
   @media ${media.tablet} {
     margin: 1.5rem 1.5rem;
-    height: 270px;
     width: 450px;
   }
 

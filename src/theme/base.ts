@@ -46,12 +46,12 @@ export const Base = createGlobalStyle`
       --inner-background: var(--neutral-600);
       --title: var(--error-100);
       --text: var(--neutral-100);
-      --text-inverted: var(--neutral-600);
+      --text-inverted: var(--neutral-100);
       --nav-background: var(--neutral-500);
-      --nav-links: var(--green-300);
+      --nav-links: var(--green-100);
       --links: var(--green-200);
       --button: var(--green-300);
-      --terciary: var(--green-100);
+      --terciary: var(--green-200);
 
       --shadow-light: hsla(0, 0%, 98%, 0.2);
       --shadow-medium: hsla(0, 0%, 98%, 0.5);
@@ -65,7 +65,7 @@ export const Base = createGlobalStyle`
       --text: var(--neutral-600);
       --text-inverted: var(--neutral-100);
       --nav-background: var(--neutral-500);
-      --nav-links: var(--green-100);
+      --nav-links: var(--green-300);
       --links: var(--green-300);
       --button: var(--green-100);
       --terciary: var(--green-300);
