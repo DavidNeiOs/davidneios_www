@@ -9,7 +9,7 @@ interface Props {
   path: string
 }
 
-export const Nav = ({ className, path }: Props) => {
+export const NavLinks = ({ className, path }: Props) => {
   return (
     <NavContainer className={className && className}>
       <NavItem>

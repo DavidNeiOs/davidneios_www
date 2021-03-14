@@ -53,7 +53,7 @@ const moveUpAndDown = keyframes`
 export const Link = styled(LinkCmp)`
   &:link,
   &:visited {
-    color: var(--nav-links);
+    color: var(--links);
     text-decoration: none;
     transition: all 0.2s;
     padding: 2px 4px;
@@ -62,7 +62,7 @@ export const Link = styled(LinkCmp)`
 
   &:hover {
     color: var(--inner-background);
-    background-color: var(--nav-links);
+    background-color: var(--links);
     transform: translateY(-2px);
     box-shadow: 0 5px 1.5rem var(--shadow-light);
   }
@@ -120,7 +120,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: var(--nav-links);
+    background-color: var(--links);
     color: var(--terciary);
     display: flex;
     justify-content: center;
@@ -152,7 +152,7 @@ export const SocialLink = styled(LinkCmp)`
   background-color: var(--button);
   margin: 0.5rem;
   border-radius: 1.3rem;
-  color: var(--nav-links);
+  color: var(--links);
   box-shadow: 0 5px 1.5rem var(--shadow-light);
   position: relative;
   overflow: hidden;
@@ -171,7 +171,7 @@ export const SocialLink = styled(LinkCmp)`
     content: "";
     width: 120%;
     height: 120%;
-    background-color: var(--nav-links);
+    background-color: var(--links);
     position: absolute;
     left: -110%;
     top: 90%;
@@ -195,7 +195,7 @@ export const NavLink = styled(LinkCmp)`
 
   &:hover {
     background-color: var(--nav-links);
-    color: var(--terciary);
+    color: var(--primary);
   }
 
   &::before {

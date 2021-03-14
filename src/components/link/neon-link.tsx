@@ -12,7 +12,7 @@ interface Props {
 
 const Link = ({ children, to, style, className }: Props) => {
   return (
-    <LinkCmp to={to} style={style && style} className={className && className}>
+    <LinkCmp to={to} style={style} className={className}>
       <span></span>
       <span></span>
       <span></span>

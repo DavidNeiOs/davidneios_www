@@ -7,33 +7,48 @@ import Typist from "react-typist"
 import { Layout } from "../layout"
 import { Text } from "../components/Text"
 import { Link, NeonLink } from "../components/link"
+import { PortableText } from "../components/portable-text"
 import SEO from "../components/seo"
 import { media } from "../theme"
+import { getLocalText } from "../utils/get-local-text"
 
 const IndexPage = (props: any) => {
+  const localize = getLocalText("en")
+  const {
+    introduction,
+    typist,
+    _rawIntroduction,
+    _rawExperienceIntro,
+    projectSection
+  } = localize(props.data.sanity)
+
   return (
     <Layout path={props.path}>
       <SEO title="Home" />
       <PageContainer>
         <ProfileSection>
           <ImgContainer>
-            <Img fluid={props.data.profile_img.childImageSharp.fluid} />
+            <Img
+              fluid={introduction.picture.asset.fluid}
+              style={{ height: "100%", width: "100%" }}
+            />
           </ImgContainer>
           <IntroductionSection>
             <Title withComponent="h1" variant="heading1Bold">
-              Hello, I'm David!
+              {introduction.title}
             </Title>
-            <Text variant="bodyLargePrimary" withComponent="p">
-              I'm a <strong>Software developer</strong>. Born and raised in
-              Colombia. I live now in Montreal 🇨🇦. I have over a year experience
-              as a Full-Stack Developer and I'm now looking for new
-              opportunities working with a team that is commited to make a
-              difference.
+            <Text variant="bodyLargePrimary">
+              <PortableText blocks={_rawIntroduction.introText} />
             </Text>
           </IntroductionSection>
         </ProfileSection>
-        <Link to="/about" style={{ alignSelf: "flex-end", marginTop: "1rem" }}>
-          <Text variant="bodyMediumPrimary">Learn more &rarr;</Text>
+        <Link
+          to={introduction.link.link}
+          style={{ alignSelf: "flex-end", marginTop: "1rem" }}
+        >
+          <Text variant="bodyMediumPrimary">
+            {introduction.link.text} &rarr;
+          </Text>
         </Link>
         <SubTitle>
           <Text
@@ -41,58 +56,45 @@ const IndexPage = (props: any) => {
             withComponent="h3"
             style={{ textAlign: "center" }}
           >
-            <Text>I develop applications in </Text>
-            <Typist cursor={{ hideWhenDone: true }} startDelay={1500}>
-              <Text>JavaScript</Text>
-              <Typist.Backspace count={10} delay={2000} />
-              <Text>TypeScript</Text>
+            <Text>{typist.enterText}</Text>
+            <Typist cursor={{ hideWhenDone: true }} startDelay={typist.delay}>
+              <Text>{typist.startText}</Text>
+              <Typist.Backspace
+                count={typist.numOfCharsToDelete}
+                delay={typist.backspaceDelay}
+              />
+              <Text>{typist.finalText}</Text>
             </Typist>
           </Text>
         </SubTitle>
         <Text variant="bodyLargePrimary" withComponent="p">
-          I have experience working with React, Node(Express) and React Native
-          for mobile development. Some of the technologies I use include Gatsby,
-          GraphQL and Firebase. I have projects that vary in focus from only
-          styling to full-stack applications. I love to learn best practices and
-          write clean code that is understandable and scalabe. At the moment I'm
-          going through{" "}
-          <Link to="https://testingjavascript.com/">Testing JavaScript</Link> by
-          Kent C. Dodds.
+          <PortableText blocks={_rawExperienceIntro} />
         </Text>
         <ProjectsContainer>
           <Text variant="heading4" withComponent="h3">
-            Latest projects:
+            {projectSection.title}
           </Text>
           <ProjectsParent>
-            <Project>
-              <Caption>
-                <ProjectTitle variant="heading4Bold" withComponent="h4">
-                  Covid19 - SAT
-                </ProjectTitle>
-                <Text
-                  variant="bodyLargePrimary"
-                  style={{ fontStyle: "italic" }}
-                >
-                  Self assessment tool for people in the caribbean islands
-                </Text>
-              </Caption>
-              <Img fluid={props.data.covid.childImageSharp.fluid} />
-            </Project>
-            <Project>
-              <Caption>
-                <ProjectTitle variant="heading4Bold" withComponent="h4">
-                  Uplet
-                </ProjectTitle>
-                <Text variant="bodyLargePrimary">
-                  Space anywhere, anytime for independant professionals
-                </Text>
-              </Caption>
-              <Img fluid={props.data.uplet.childImageSharp.fluid} />
-            </Project>
+            {projectSection.projects.map((project: any) => (
+              <Project key={project.id}>
+                <Caption>
+                  <ProjectTitle variant="heading4Bold"  withComponent="h4">
+                    {project.name}
+                  </ProjectTitle>
+                  <Text
+                    variant="bodyLargePrimary"
+                    style={{ fontStyle: "italic" }}
+                  >
+                    {project.shortDescription}
+                  </Text>
+                </Caption>
+                <Img fluid={project.image.asset.fluid} />
+              </Project>
+            ))}
           </ProjectsParent>
-          <NeonLink to="/portfolio" style={{ alignSelf: "center" }}>
+          <NeonLink to={projectSection.link.link} style={{ alignSelf: "center" }}>
             <Text variant="bodySmallPrimary" withComponent="p">
-              See more &rarr;
+              {projectSection.link.text} &rarr;
             </Text>
           </NeonLink>
         </ProjectsContainer>
@@ -103,26 +105,90 @@ const IndexPage = (props: any) => {
 
 export const INDEX_QUERY = graphql`
   query {
-    profile_img: file(relativePath: { eq: "images/profile_square.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+    sanity: sanityHomePage {
+      introduction {
+        picture {
+          caption {
+            en
+            es
+            fr
+            _type
+          }
+          asset {
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
         }
+        title {
+          _type
+          en
+          es
+          fr
+        }
+        link {
+          _type
+          link
+          text {
+            _type
+            en
+            es
+            fr
+          }
+        }
+      }
+      _rawIntroduction(resolveReferences: { maxDepth: 5 })
+      typist {
+        _type
+        enterText {
+          _type
+          en
+          es
+          fr
+        }
+        delay
+        startText
+        numOfCharsToDelete
+        backspaceDelay
+        finalText
+      }
+      _rawExperienceIntro(resolveReferences: { maxDepth: 5 })
+      projectSection {
+      _type
+      link {
+        _type
+        link
+        text {
+          en
+          es
+          fr
+          _type
+        }
+      }
+      projects {
+        image {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        id
+        name
+        shortDescription {
+          _type
+          en
+          es
+          fr
+        }
+      }
+      title {
+        en
+        es
+        fr
+        _type
       }
     }
-    uplet: file(relativePath: { eq: "images/upletspace.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    covid: file(relativePath: { eq: "images/covid19-sat.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
     }
   }
 `
@@ -274,12 +340,11 @@ const Project = styled.div`
 
   @media ${media.tablet} {
     margin: 1.5rem 1.5rem;
+    width: 450px;
   }
 
   @media ${media.desktop} {
     margin: 2rem 0;
-    height: 270px;
-    width: 450px;
     position: relative;
     box-shadow: 0 5px 1.5rem var(--shadow-light);
 
@@ -292,7 +357,7 @@ const Project = styled.div`
 const ProjectTitle = styled(Text)`
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--terciary);
+  color: var(--title);
 `
 
 export default IndexPage

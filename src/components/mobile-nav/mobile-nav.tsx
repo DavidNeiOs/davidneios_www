@@ -94,7 +94,7 @@ const Burger = styled.div`
   margin-top: 10px;
   width: 100%;
   height: 2px;
-  background-color: var(--button);
+  background-color: var(--nav-links);
 
   ::before {
     content: "";
@@ -103,7 +103,7 @@ const Burger = styled.div`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--button);
+    background-color: var(--nav-links);
   }
   ::after {
     content: "";
@@ -112,7 +112,7 @@ const Burger = styled.div`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--button);
+    background-color: var(--nav-links);
   }
 `
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { media } from "../theme"
-import { Nav } from "./nav"
+import { NavLinks } from "./nav-links"
 import { SimpleLink } from "../components/link"
 import { Text } from "../components/Text"
 import { ToggleTheme } from "../components/toggle-theme"
@@ -13,7 +13,7 @@ interface Props {
   path: string
 }
 
-const Header = ({ siteTitle, path }: Props) => {
+const NavBar = ({ siteTitle, path }: Props) => {
   let websiteTheme: any
   if (typeof window !== "undefined") {
     websiteTheme = (window as any).__theme
@@ -40,11 +40,11 @@ const Header = ({ siteTitle, path }: Props) => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "center",
+            justifyContent: "center"
           }}
-        >
-          <Text variant="heading3" withComponent="h3" style={{ margin: 0 }}>
+        >          
+          <Name variant="heading3" withComponent="h3">
             <SimpleLink
               to="/"
               style={{
@@ -53,11 +53,10 @@ const Header = ({ siteTitle, path }: Props) => {
             >
               {siteTitle}
             </SimpleLink>
-          </Text>
-
+          </Name>          
           <Navigation path={path} />
           <MobileNav>
-            <Nav path={path}></Nav>
+            <NavLinks path={path} />
             <div
               style={{
                 display: "flex",
@@ -79,7 +78,7 @@ const Header = ({ siteTitle, path }: Props) => {
   )
 }
 
-const HeaderEl = styled.header`
+const HeaderEl = styled.nav`
   background-color: var(--primary);
   a {
     color: var(--nav-links);
@@ -89,11 +88,19 @@ const HeaderEl = styled.header`
   width: 100%;
 `
 
-const Navigation = styled(Nav)`
+const Name = styled(Text)`
+  margin: 0; 
+  flex-grow: 1; 
+  flex-basis: 200px
+`;
+
+const Navigation = styled(NavLinks)`
   display: none;
 
   @media ${media.tablet} {
     display: flex;
+    flex-grow: 2;
+    justify-content: center;
   }
 `
 
@@ -101,8 +108,11 @@ const TabletNav = styled.div`
   display: none;
 
   @media ${media.tablet} {
-    display: block;
+    flex-basis: 200px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
   }
 `
 
-export default Header
+export default NavBar

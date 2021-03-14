@@ -1,3 +1,9 @@
+const dotenv = require("dotenv");
+
+dotenv.config({
+  path: ".env",
+});
+
 module.exports = {
   siteMetadata: {
     title: `DavidNeiOs`,
@@ -20,6 +26,14 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: false,
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: "3oo04e0l",
+        dataset: "production",
+        token: process.env.SANITY_TOKEN,
       },
     },
     {
