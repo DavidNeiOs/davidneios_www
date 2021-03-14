@@ -20,26 +20,26 @@ export const Base = createGlobalStyle`
     color: var(--textNormal);
     line-height: 1.6;
 
-    --primary-100: #694878;
-    --primary-200: #4A2B57;
-    --primary-300: #36213E;
-    --primary-400: #2C0D38;
-    --primary-500: #271030;
-    --neutral-100: #FAFAFA;
-    --neutral-200: #F4F5F7;
-    --neutral-300: #E4E8F0;
-    --neutral-400: #737581;
-    --neutral-500: #4A4B53;
-    --neutral-600: #1B1C1E;
-    --green-100: #DBF9F0;
-    --green-200: #B3DEC1;
-    --green-300: #36827F;
-    --warning-100: #E8DB64;    
-    --warning-200: #EDD926;    
-    --warning-300: #C2B013;    
-    --error-100: #D0454C;
-    --error-200: #B54248;
-    --error-300: #95353A;
+    --primary-100: hsl(281, 25%, 38%);
+    --primary-200: hsl(282, 34%, 25%);
+    --primary-300: hsl(283, 31%, 19%);
+    --primary-400: hsl(283, 62%, 14%);
+    --primary-500: hsl(281, 75%, 10%);
+    --neutral-100: hsl(0, 0%, 98%);
+    --neutral-200: hsl(220, 16%, 96%);
+    --neutral-300: hsl(220, 29%, 92%);
+    --neutral-400: hsl(231, 6%, 48%);
+    --neutral-500: hsl(233, 6%, 31%);
+    --neutral-600: hsl(220, 5%, 11%);
+    --green-100: hsl(162, 71%, 92%);
+    --green-200: hsl(140, 39%, 79%);
+    --green-300: hsl(178, 41%, 36%);
+    --warning-100: hsl(54, 74%, 65%);    
+    --warning-200: hsl(54, 85%, 54%);    
+    --warning-300: hsl(54, 82%, 42%);    
+    --error-100: hsl(357, 60%, 54%);
+    --error-200: hsl(357, 47%, 48%);
+    --error-300: hsl(357, 48%, 40%);
 
     &.dark {
       --primary: var(--primary-500);
@@ -53,10 +53,10 @@ export const Base = createGlobalStyle`
       --button: var(--green-300);
       --terciary: var(--green-100);
 
-      --shadow-light: rgba(250, 250, 250, 0.2);
-      --shadow-medium: rgba(250, 250, 250, 0.5);
-      --shadow-strong: rgba(250, 250, 250, 0.7);
-      --shadow-background: rgba(27, 28, 30, .5);
+      --shadow-light: hsla(0, 0%, 98%, 0.2);
+      --shadow-medium: hsla(0, 0%, 98%, 0.5);
+      --shadow-strong: hsla(0, 0%, 98%, 0.7);
+      --shadow-background: hsla(220, 5%, 11%, 0.5);
     }
     &.light {
       --primary: var(--primary-200);
@@ -70,10 +70,10 @@ export const Base = createGlobalStyle`
       --button: var(--green-100);
       --terciary: var(--green-300);
 
-      --shadow-light: rgba(0, 0, 0, 0.3);
-      --shadow-medium: rgba(0, 0, 0, 0.5);
-      --shadow-strong: rgba(0, 0, 0, 0.7);
-      --shadow-background: rgba(250, 250, 250, .5);
+      --shadow-light: hsla(0, 0%, 0%, 0.3);
+      --shadow-medium: hsla(0, 0%, 0%, 0.5);
+      --shadow-strong: hsla(0, 0%, 0%, 0.7);
+      --shadow-background: hsla(0, 0%, 98%, 0.5);
     }
     h1,
     h2,
@@ -88,7 +88,7 @@ export const Base = createGlobalStyle`
     button,
     select,
     a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
     }
     img {
       padding: 0;

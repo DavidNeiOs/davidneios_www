@@ -2,7 +2,7 @@ import React from "react"
 import { FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa"
 
 import { Container } from "./container"
-import { Nav } from "./nav"
+import { NavLinks } from "./nav-links"
 import { Text } from "../components/Text"
 import { SocialLink } from "../components/link"
 import styled from "styled-components"
@@ -34,7 +34,7 @@ export const Footer = ({ path }: Props) => {
               </SocialLink>
             </LinksContainer>
           </SocialContainer>
-          <Nav path={path} />
+          <NavLinks path={path} />
         </InnerContainer>
         <Text
           variant="bodyMediumPrimary"

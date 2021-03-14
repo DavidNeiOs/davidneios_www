@@ -19,8 +19,9 @@ const IndexPage = (props: any) => {
     typist,
     _rawIntroduction,
     _rawExperienceIntro,
+    projectSection
   } = localize(props.data.sanity)
-
+  console.log(projectSection);
   return (
     <Layout path={props.path}>
       <SEO title="Home" />
@@ -71,38 +72,29 @@ const IndexPage = (props: any) => {
         </Text>
         <ProjectsContainer>
           <Text variant="heading4" withComponent="h3">
-            Latest projects:
+            {projectSection.title}
           </Text>
           <ProjectsParent>
-            <Project>
-              <Caption>
-                <ProjectTitle variant="heading4Bold" withComponent="h4">
-                  Covid19 - SAT
-                </ProjectTitle>
-                <Text
-                  variant="bodyLargePrimary"
-                  style={{ fontStyle: "italic" }}
-                >
-                  Self assessment tool for people in the caribbean islands
-                </Text>
-              </Caption>
-              <Img fluid={props.data.covid.childImageSharp.fluid} />
-            </Project>
-            <Project>
-              <Caption>
-                <ProjectTitle variant="heading4Bold" withComponent="h4">
-                  Uplet
-                </ProjectTitle>
-                <Text variant="bodyLargePrimary">
-                  Space anywhere, anytime for independant professionals
-                </Text>
-              </Caption>
-              <Img fluid={props.data.uplet.childImageSharp.fluid} />
-            </Project>
+            {projectSection.projects.map(project => (
+              <Project>
+                <Caption>
+                  <ProjectTitle variant="heading4Bold"  withComponent="h4">
+                    {project.name}
+                  </ProjectTitle>
+                  <Text
+                    variant="bodyLargePrimary"
+                    style={{ fontStyle: "italic" }}
+                  >
+                    {project.shortDescription}
+                  </Text>
+                </Caption>
+                <Img fluid={project.image.asset.fluid} />
+              </Project>
+            ))}
           </ProjectsParent>
-          <NeonLink to="/portfolio" style={{ alignSelf: "center" }}>
+          <NeonLink to={projectSection.link.link} style={{ alignSelf: "center" }}>
             <Text variant="bodySmallPrimary" withComponent="p">
-              See more &rarr;
+              {projectSection.link.text} &rarr;
             </Text>
           </NeonLink>
         </ProjectsContainer>
@@ -113,27 +105,6 @@ const IndexPage = (props: any) => {
 
 export const INDEX_QUERY = graphql`
   query {
-    profile_img: file(relativePath: { eq: "images/profile_square.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    uplet: file(relativePath: { eq: "images/upletspace.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    covid: file(relativePath: { eq: "images/covid19-sat.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     sanity: sanityHomePage {
       introduction {
         picture {
@@ -182,6 +153,41 @@ export const INDEX_QUERY = graphql`
         finalText
       }
       _rawExperienceIntro(resolveReferences: { maxDepth: 5 })
+      projectSection {
+      _type
+      link {
+        _type
+        link
+        text {
+          en
+          es
+          fr
+          _type
+        }
+      }
+      projects {
+        image {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        name
+        shortDescription {
+          _type
+          en
+          es
+          fr
+        }
+      }
+      title {
+        en
+        es
+        fr
+        _type
+      }
+    }
     }
   }
 `
@@ -333,12 +339,12 @@ const Project = styled.div`
 
   @media ${media.tablet} {
     margin: 1.5rem 1.5rem;
+    height: 270px;
+    width: 450px;
   }
 
   @media ${media.desktop} {
     margin: 2rem 0;
-    height: 270px;
-    width: 450px;
     position: relative;
     box-shadow: 0 5px 1.5rem var(--shadow-light);
 

@@ -2,7 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import { theme } from "../theme"
-import Header from "./header"
+import NavBar from "./nav-bar"
 import { Footer } from "./footer"
 import { Container } from "./container"
 import { Base } from "../theme"
@@ -33,7 +33,7 @@ export const Layout: React.FC<Props> = ({ children, path }) => {
           `}
         >
           {data => (
-            <Header siteTitle={data.site.siteMetadata.title} path={path} />
+            <NavBar siteTitle={data.site.siteMetadata.title} path={path} />
           )}
         </StaticQuery>
         <main>

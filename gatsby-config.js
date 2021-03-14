@@ -1,3 +1,9 @@
+const dotenv = require("dotenv");
+
+dotenv.config({
+  path: ".env",
+});
+
 module.exports = {
   siteMetadata: {
     title: `DavidNeiOs`,
@@ -27,9 +33,7 @@ module.exports = {
       options: {
         projectId: "3oo04e0l",
         dataset: "production",
-        // a token with read permissions is required
-        // if you have a private dataset
-        // token: process.env.MY_SANITY_TOKEN,
+        token: process.env.SANITY_TOKEN,
       },
     },
     {
