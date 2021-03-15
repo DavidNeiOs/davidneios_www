@@ -115,7 +115,7 @@ const Title = styled(Text)`
     top: 0;
     height: 1.8rem;
     width: 90%;
-    background: var(--terciary);
+    background: var(--detail);
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
@@ -164,7 +164,7 @@ const TagsContainer = styled.ul`
 
 const Tag = styled.li`
   display: inline-block;
-  background-color: var(--terciary);
+  background-color: var(--detail);
   padding: 4px 8px;
   border-radius: 100px;
   color: var(--text-inverted);

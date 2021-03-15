@@ -59,7 +59,7 @@ export const NeonLink = styled(Link)`
   position: relative;
   display: inline-block;
   padding: 15px 20px;
-  color: var(--nav-links);
+  color: var(--button);
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
@@ -68,10 +68,10 @@ export const NeonLink = styled(Link)`
   margin-top: 2rem;
 
   &:hover {
-    background: var(--nav-links);
+    background: var(--button);
     color: var(--inner-background);
-    box-shadow: 0 0 5px var(--nav-links), 0 0 25px var(--nav-links),
-      0 0 50px var(--nav-links), 0 0 200px var(--nav-links);
+    box-shadow: 0 0 5px var(--button), 0 0 25px var(--button),
+      0 0 50px var(--button), 0 0 200px var(--button);
   }
 
   & span {
@@ -84,7 +84,7 @@ export const NeonLink = styled(Link)`
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--nav-links));
+    background: linear-gradient(90deg, transparent, var(--button));
     animation: ${borderTop} 1s linear infinite;
   }
 
@@ -93,7 +93,7 @@ export const NeonLink = styled(Link)`
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, var(--nav-links));
+    background: linear-gradient(180deg, transparent, var(--button));
     animation: ${borderRight} 1s linear infinite;
     animation-delay: 0.25s;
   }
@@ -103,7 +103,7 @@ export const NeonLink = styled(Link)`
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, var(--nav-links));
+    background: linear-gradient(270deg, transparent, var(--button));
     animation: ${borderBottom} 1s linear infinite;
     animation-delay: 0.5s;
   }
@@ -113,7 +113,7 @@ export const NeonLink = styled(Link)`
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, var(--nav-links));
+    background: linear-gradient(360deg, transparent, var(--button));
     animation: ${borderLeft} 1s linear infinite;
     animation-delay: 0.75s;
   }

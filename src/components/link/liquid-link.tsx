@@ -51,7 +51,7 @@ export const LiquidLink = styled(Link)`
     top: -4rem;
     width: 10rem;
     height: 10rem;
-    background: #4973ff;
+    background: var(--detail);
     box-shadow: inset 0 0 2.5rem var(--shadow-background);
     transition: 0.5s;
   }

@@ -51,7 +51,7 @@ export const Footer = ({ path }: Props) => {
 const FooterContainer = styled.footer`
   margin-top: 3rem;
   background-color: var(--primary);
-  color: var(--text-inverted);
+  color: var(--text);
   padding: 1.5rem;
   width: 100%;
 `

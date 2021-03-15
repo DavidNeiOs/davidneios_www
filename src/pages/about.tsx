@@ -180,7 +180,7 @@ const Selector = styled.div<{ current?: boolean }>`
   height: 1.5rem;
   margin-right: 1.5rem;
   border-radius: 50%;
-  background: var(--terciary);
+  background: var(--detail);
   ${props =>
     props.current
       ? animationMixin
