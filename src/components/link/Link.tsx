@@ -90,7 +90,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     background-color: var(--inner-background);
     color: transparent;
     font-size: 1.6rem;
-    border: 2px solid var(--terciary);
+    border: 2px solid var(--primary);
     border-radius: 50px;
     padding: 1rem 2rem;
     position: relative;
@@ -105,7 +105,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     height: 100%;
     width: 100%;
     background-color: var(--nav-links);
-    color: var(--terciary);
+    color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +121,7 @@ export const ButtonLink = styled(LinkCmp)<{ content: string }>`
     height: 100%;
     width: 100%;
     background-color: var(--links);
-    color: var(--terciary);
+    color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@ export const SocialLink = styled(LinkCmp)`
   background-color: var(--button);
   margin: 0.5rem;
   border-radius: 1.3rem;
-  color: var(--links);
+  color: var(--text-inverted);
   box-shadow: 0 5px 1.5rem var(--shadow-light);
   position: relative;
   overflow: hidden;
@@ -171,7 +171,7 @@ export const SocialLink = styled(LinkCmp)`
     content: "";
     width: 120%;
     height: 120%;
-    background-color: var(--links);
+    background-color: var(--text-inverted);
     position: absolute;
     left: -110%;
     top: 90%;

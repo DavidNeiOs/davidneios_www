@@ -20,13 +20,14 @@ export const Base = createGlobalStyle`
     color: var(--textNormal);
     line-height: 1.6;
 
-    --primary-100: hsl(281, 25%, 38%);
-    --primary-200: hsl(282, 34%, 25%);
-    --primary-300: hsl(283, 31%, 19%);
-    --primary-400: hsl(283, 62%, 14%);
-    --primary-500: hsl(281, 75%, 10%);
+    --primary-100: hsl(161, 81%, 6%);
+    --primary-200: hsl(161, 53%, 12%);
+    --primary-300: hsl(161, 88%, 25%);
+    --primary-400: hsl(161, 48%, 38%);
+    --primary-500: hsl(161, 84%, 38%);
+    --primary-600: hsl(161, 50%, 75%);
     --neutral-100: hsl(0, 0%, 98%);
-    --neutral-200: hsl(220, 16%, 96%);
+    --neutral-200: hsl(220, 25%, 95%);
     --neutral-300: hsl(220, 29%, 92%);
     --neutral-400: hsl(231, 6%, 48%);
     --neutral-500: hsl(233, 6%, 31%);
@@ -42,16 +43,16 @@ export const Base = createGlobalStyle`
     --error-300: hsl(357, 48%, 40%);
 
     &.dark {
-      --primary: var(--primary-500);
+      --primary: var(--primary-100);
       --inner-background: var(--neutral-600);
-      --title: var(--error-100);
-      --text: var(--neutral-100);
-      --text-inverted: var(--neutral-100);
       --nav-background: var(--neutral-500);
-      --nav-links: var(--green-100);
-      --links: var(--green-200);
-      --button: var(--green-300);
-      --terciary: var(--green-200);
+      --title: var(--primary-500);
+      --text: var(--neutral-200);
+      --text-inverted: var(--neutral-500);
+      --nav-links: var(--neutral-300);
+      --links: var(--primary-400);
+      --button: var(--primary-400);
+      --detail: var(--primary-500);
 
       --shadow-light: hsla(0, 0%, 98%, 0.2);
       --shadow-medium: hsla(0, 0%, 98%, 0.5);
@@ -59,16 +60,16 @@ export const Base = createGlobalStyle`
       --shadow-background: hsla(220, 5%, 11%, 0.5);
     }
     &.light {
-      --primary: var(--primary-200);
+      --primary: var(--primary-400);
       --inner-background: var(--neutral-100);
-      --title: var(--error-300);
+      --title: var(--primary-300);
       --text: var(--neutral-600);
       --text-inverted: var(--neutral-100);
       --nav-background: var(--neutral-500);
-      --nav-links: var(--green-300);
-      --links: var(--green-300);
-      --button: var(--green-100);
-      --terciary: var(--green-300);
+      --nav-links: var(--neutral-600);
+      --links: var(--primary-300);
+      --button: var(--primary-200);
+      --detail: var(--primary-400);
 
       --shadow-light: hsla(0, 0%, 0%, 0.3);
       --shadow-medium: hsla(0, 0%, 0%, 0.5);
