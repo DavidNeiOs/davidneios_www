@@ -65,7 +65,7 @@ export const Base = createGlobalStyle`
       --title: var(--primary-300);
       --text: var(--neutral-600);
       --text-inverted: var(--neutral-100);
-      --nav-background: var(--neutral-500);
+      --nav-background: var(--neutral-300);
       --nav-links: var(--neutral-600);
       --links: var(--primary-300);
       --button: var(--primary-200);
