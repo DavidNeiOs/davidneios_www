@@ -13,11 +13,6 @@ export const NavLinks = ({ className, path }: Props) => {
   return (
     <NavContainer className={className && className}>
       <NavItem>
-        <NavLink to="/" className={path === "/" ? "selected" : undefined}>
-          Home
-        </NavLink>
-      </NavItem>
-      <NavItem>
         <NavLink
           to="/about"
           className={path === "/about/" ? "selected" : undefined}

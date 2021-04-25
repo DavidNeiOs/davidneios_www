@@ -17,6 +17,7 @@ export const LinkCmp = ({ children, to, style, className }: LinkProps) => {
         target="_blank"
         style={style && style}
         className={className && className}
+        rel="noopener"
       >
         {children}
       </a>

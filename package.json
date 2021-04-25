@@ -3,7 +3,7 @@
   "private": true,
   "description": "David A. Neira Ospina personal portafolio website",
   "version": "0.1.0",
-  "author": "David Neira <hello@davidneios.dev>",
+  "author": "David Neira <davidneios25@gmail.com>",
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@types/lodash": "^4.14.141",

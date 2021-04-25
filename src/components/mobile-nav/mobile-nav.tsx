@@ -64,7 +64,7 @@ const Backdrop = styled.div`
   z-index: 10;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: hsla(0, 0%, 0%, 0.5);
   transform: translateX(100%);
   opacity: 0;
   transition: opacity 0.4s;
