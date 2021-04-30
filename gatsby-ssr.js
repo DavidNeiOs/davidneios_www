@@ -38,6 +38,24 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
             })
 
             setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'))
+
+            window.__onBackdropOpen = () => {
+              const body = document.querySelector('body')
+              body.style.overflow = 'hidden'
+              body.style.position = 'fixed'
+              body.style.width = '100%'
+              body.style.height = 'calc(100% + 0px)'
+              body.style.top = '0px'
+            }
+
+            window.__onBackdropClose = () => {
+              const body = document.querySelector('body')
+              body.style.overflow = ''
+              body.style.position = ''
+              body.style.width = ''
+              body.style.height = ''
+              body.style.top = ''
+            }
           })()
         `,
       },

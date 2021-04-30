@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
@@ -12,45 +12,51 @@ import { getLocalText } from "../utils/get-local-text"
 import { PortableText } from "../components/portable-text"
 
 const Portfolio = (props: any) => {
-  const { data } = props;
+  const { data } = props
 
-  const localize = getLocalText("en");
-  const { allSanityProject: {nodes: projects}} = localize(data);
-  
+  const localize = getLocalText("en")
+  const {
+    allSanityProject: { nodes: projects },
+  } = localize(data)
+
+  useEffect(() => {
+    ;(window as any).__onBackdropClose()
+  }, [])
+
   return (
     <Layout path={props.path}>
       <SEO title="Portfolio" />
       <ProjectsContainer>
-      {projects.map((project:any) => (
-        <Project key={project.id}>
-        <Title variant="heading3Bold" withComponent="h3">
-          {project.name}
-        </Title>
-        <ImageContainer>
-          <Image
-            fluid={project.image.asset.fluid}
-            style={{ height: "100%" }}
-          />
-        </ImageContainer>
-        <Description>
-          <Text variant="bodyMediumPrimary" withComponent="p">
-            <PortableText blocks={project._rawLongDescription} />
-          </Text>
-          {project.isLive && (
-            <LiquidLink to={project.link.link}>
-            <Text variant="bodySmallPrimary">live</Text>
-          </LiquidLink>
-          )}  
-        </Description>
-        <TagsContainer>
-          {project.tech.map((tag: any, index: number) => (
-            <Tag key={index}>
-              <Text variant="bodySmallPrimary">{tag}</Text>
-          </Tag>
-          ))}
-        </TagsContainer>
-      </Project>
-      ))}
+        {projects.map((project: any) => (
+          <Project key={project.id}>
+            <Title variant="heading3Bold" withComponent="h3">
+              {project.name}
+            </Title>
+            <ImageContainer>
+              <Image
+                fluid={project.image.asset.fluid}
+                style={{ height: "100%" }}
+              />
+            </ImageContainer>
+            <Description>
+              <Text variant="bodyMediumPrimary" withComponent="p">
+                <PortableText blocks={project._rawLongDescription} />
+              </Text>
+              {project.isLive && (
+                <LiquidLink to={project.link.link}>
+                  <Text variant="bodySmallPrimary">live</Text>
+                </LiquidLink>
+              )}
+            </Description>
+            <TagsContainer>
+              {project.tech.map((tag: any, index: number) => (
+                <Tag key={index}>
+                  <Text variant="bodySmallPrimary">{tag}</Text>
+                </Tag>
+              ))}
+            </TagsContainer>
+          </Project>
+        ))}
       </ProjectsContainer>
     </Layout>
   )
@@ -58,7 +64,7 @@ const Portfolio = (props: any) => {
 
 export const PORTFOLIO_QUERY = graphql`
   query {
-    allSanityProject(sort: {fields: _updatedAt, order: DESC}) {
+    allSanityProject(sort: { fields: _updatedAt, order: DESC }) {
       nodes {
         image {
           asset {
@@ -74,7 +80,7 @@ export const PORTFOLIO_QUERY = graphql`
         }
         name
         tech
-        _rawLongDescription(resolveReferences: {maxDepth: 5})
+        _rawLongDescription(resolveReferences: { maxDepth: 5 })
         isLive
       }
     }

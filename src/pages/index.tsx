@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import Typist from "react-typist"
 
@@ -19,8 +20,12 @@ const IndexPage = (props: any) => {
     typist,
     _rawIntroduction,
     _rawExperienceIntro,
-    projectSection
+    projectSection,
   } = localize(props.data.sanity)
+
+  useEffect(() => {
+    ;(window as any).__onBackdropClose()
+  }, [])
 
   return (
     <Layout path={props.path}>
@@ -78,7 +83,7 @@ const IndexPage = (props: any) => {
             {projectSection.projects.map((project: any) => (
               <Project key={project.id}>
                 <Caption>
-                  <ProjectTitle variant="heading4Bold"  withComponent="h4">
+                  <ProjectTitle variant="heading4Bold" withComponent="h4">
                     {project.name}
                   </ProjectTitle>
                   <Text
@@ -92,7 +97,10 @@ const IndexPage = (props: any) => {
               </Project>
             ))}
           </ProjectsParent>
-          <NeonLink to={projectSection.link.link} style={{ alignSelf: "center" }}>
+          <NeonLink
+            to={projectSection.link.link}
+            style={{ alignSelf: "center" }}
+          >
             <Text variant="bodySmallPrimary" withComponent="p">
               {projectSection.link.text} &rarr;
             </Text>
@@ -154,41 +162,41 @@ export const INDEX_QUERY = graphql`
       }
       _rawExperienceIntro(resolveReferences: { maxDepth: 5 })
       projectSection {
-      _type
-      link {
         _type
-        link
-        text {
-          en
-          es
-          fr
+        link {
           _type
-        }
-      }
-      projects {
-        image {
-          asset {
-            fluid(maxWidth: 700) {
-              ...GatsbySanityImageFluid
-            }
+          link
+          text {
+            en
+            es
+            fr
+            _type
           }
         }
-        id
-        name
-        shortDescription {
-          _type
+        projects {
+          image {
+            asset {
+              fluid(maxWidth: 700) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          id
+          name
+          shortDescription {
+            _type
+            en
+            es
+            fr
+          }
+        }
+        title {
           en
           es
           fr
+          _type
         }
       }
-      title {
-        en
-        es
-        fr
-        _type
-      }
-    }
     }
   }
 `

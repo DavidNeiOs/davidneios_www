@@ -11,10 +11,12 @@ export const MobileNav = ({ children }: Props) => {
   const [showOptions, setShowOptions] = useState<boolean>(false)
 
   const showBackdrop = () => {
+    ;(window as any).__onBackdropOpen()
     setShowOptions(true)
   }
 
   const hideBackdrop = () => {
+    ;(window as any).__onBackdropClose()
     setShowOptions(false)
   }
 

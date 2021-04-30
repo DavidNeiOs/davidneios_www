@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled, { keyframes, css } from "styled-components"
@@ -10,26 +10,41 @@ import { PortableText } from "../components/portable-text"
 import { Text } from "../components/Text"
 import { media } from "../theme"
 import { getLocalText } from "../utils/get-local-text"
-import { groupArrayToObj } from "../utils/group-array-to-object";
+import { groupArrayToObj } from "../utils/group-array-to-object"
 import { modifyExperienceArray } from "../utils/modify-experience-array"
 
-const skillsOrder = ['frontend', 'mobile', 'backend', 'languages', 'sourceControl']
-const skillNames = ['Front-End', 'Mobile', 'Back-End', 'Languages', 'Source Control']
-
+const skillsOrder = [
+  "frontend",
+  "mobile",
+  "backend",
+  "languages",
+  "sourceControl",
+]
+const skillNames = [
+  "Front-End",
+  "Mobile",
+  "Back-End",
+  "Languages",
+  "Source Control",
+]
 
 const AboutPage = (props: any) => {
   const { data } = props
 
   const localize = getLocalText("en")
   const {
-    allSanitySkills: { group: skills},
-    allSanityExperience: { nodes: experienceArr},
+    allSanitySkills: { group: skills },
+    allSanityExperience: { nodes: experienceArr },
     sanityAboutPage: page,
   } = localize(data)
 
   const skillsObj = groupArrayToObj(skills)
-  const experiences = modifyExperienceArray(experienceArr, 'en');
-  
+  const experiences = modifyExperienceArray(experienceArr, "en")
+
+  useEffect(() => {
+    ;(window as any).__onBackdropClose()
+  }, [])
+
   return (
     <Layout path={props.path}>
       <SEO title="About" />
@@ -47,12 +62,16 @@ const AboutPage = (props: any) => {
         <SectionTitle variant="heading2" withComponent="h2">
           {page.experienceTitle}
         </SectionTitle>
-          {experiences.map(({ isCurrent, timeString, place, position, company, id}) => (
+        {experiences.map(
+          ({ isCurrent, timeString, place, position, company, id }) => (
             <ExperienceContainer key={id}>
               <Selector current={isCurrent} />
               <Experience>
                 <ExperienceLocation>
-                  <Text variant="bodyMediumPrimary" style={{  marginRight: "2rem" }}>
+                  <Text
+                    variant="bodyMediumPrimary"
+                    style={{ marginRight: "2rem" }}
+                  >
                     {timeString}
                   </Text>
                   <Text variant="bodySmallPrimary">
@@ -63,7 +82,8 @@ const AboutPage = (props: any) => {
                 <Text variant="bodyMediumPrimary">{company}</Text>
               </Experience>
             </ExperienceContainer>
-          ))}
+          )
+        )}
       </Section>
       <hr />
 
@@ -71,21 +91,21 @@ const AboutPage = (props: any) => {
         <SectionTitle variant="heading2" withComponent="h2">
           {page.skillsTitle}
         </SectionTitle>
-        {skillsOrder.map((skill, index:number) => (
+        {skillsOrder.map((skill, index: number) => (
           <>
-          <Text variant="heading3" withComponent="h4">
-          {skillNames[index]}:
-          </Text>
-          <SkillsContainer>
-            {skillsObj[skill].map((obj: any) => (
-              <Skill>
-                <ImageWrapper>
-                  <Img fluid={obj.image.asset.fluid} />
-                </ImageWrapper>
-                <Text variant="bodyMediumPrimary">{obj.name}</Text>
-              </Skill>
-            ))}
-          </SkillsContainer>
+            <Text variant="heading3" withComponent="h4">
+              {skillNames[index]}:
+            </Text>
+            <SkillsContainer>
+              {skillsObj[skill].map((obj: any) => (
+                <Skill>
+                  <ImageWrapper>
+                    <Img fluid={obj.image.asset.fluid} />
+                  </ImageWrapper>
+                  <Text variant="bodyMediumPrimary">{obj.name}</Text>
+                </Skill>
+              ))}
+            </SkillsContainer>
           </>
         ))}
       </Section>
@@ -111,7 +131,7 @@ export const ABOUT_QUERY = graphql`
         fieldValue
       }
     }
-    allSanityExperience(sort: {fields: endDate, order: DESC}) {
+    allSanityExperience(sort: { fields: endDate, order: DESC }) {
       nodes {
         company
         endDate
@@ -136,14 +156,14 @@ export const ABOUT_QUERY = graphql`
         fr
       }
       introduction {
-      title {
-        _type
-        en
-        es
-        fr
+        title {
+          _type
+          en
+          es
+          fr
+        }
       }
-    }
-      _rawIntroduction(resolveReferences: {maxDepth: 5})
+      _rawIntroduction(resolveReferences: { maxDepth: 5 })
     }
   }
 `
